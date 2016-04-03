@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by aksharkumar on 3/31/16.
@@ -35,6 +36,19 @@ public class UserTest {
         u.setPassword("password123");
         assertEquals(u.getPassword(), "password123");
         assertFalse(u.getPassword() == "password");
+    }
+    @Test
+    public void testExample() {
+        u.setUsername("carUser");
+        u.setPassword("1234");
+        Vehicle v = new Vehicle();
+        v.setVIN("1HGCM82633A004352");
+        v.setMake("BMW");
+        v.setModel("528i");
+        v.setColor("Black");
+        u.addVehicle(v);
+        assertTrue(u.getVehicle("1HGCM82633A004352").equals(v));
+        assertFalse(u.getVehicle("1FGKT89674W903476").equals(v));
     }
 }
 
