@@ -10,6 +10,7 @@ public class Vehicle {
     private String color;
     private String licensePlate;
     private String VIN;
+    private Mileage mileage;
 
     public void setMake(String make) {
         this.make = make;
@@ -55,5 +56,12 @@ public class Vehicle {
 
     public String getVIN() {
         return VIN;
+    }
+
+    public void updateMileage(Integer i) {
+        mileage.setMileage(i);
+    }
+    public Mileage getMileage() {
+        return mileage;
     }
 }

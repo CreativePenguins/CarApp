@@ -29,7 +29,7 @@ public class User {
     public void addVehicle(Vehicle v) {
         if(!vehicles.containsKey(v.getVIN())) vehicles.put(v.getVIN(), v);
     }
-    
+
     //this method could introduce potential bugs
     public Vehicle getVehicle(String s) {
         if(vehicles.containsKey(s)) {

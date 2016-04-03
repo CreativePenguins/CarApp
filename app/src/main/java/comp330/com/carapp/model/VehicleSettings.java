@@ -7,7 +7,8 @@ import java.util.HashMap;
  */
 public class VehicleSettings {
     private Integer mileageUpdateFreq;
-    private HashMap maintenanceToTrack;
+    //need to define methods for setting maintenance to track
+    private HashMap<String, Boolean> maintenanceToTrack;
 
     public void setMileageUpdateFreq(Integer mileageUpdateFreq) {
         this.mileageUpdateFreq = mileageUpdateFreq;
