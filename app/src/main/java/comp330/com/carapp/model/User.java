@@ -9,7 +9,7 @@ public class User {
     private String username;
     private String password;
     private String imageURL;
-    private HashMap<String, Vehicle> vehicles;
+    private HashMap<String, Vehicle> vehicles = new HashMap<String, Vehicle>();
 
     public void setUsername (String username) {
         this.username = username;

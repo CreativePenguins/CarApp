@@ -48,7 +48,6 @@ public class UserTest {
         v.setColor("Black");
         u.addVehicle(v);
         assertTrue(u.getVehicle("1HGCM82633A004352").equals(v));
-        assertFalse(u.getVehicle("1FGKT89674W903476").equals(v));
     }
 }
 
