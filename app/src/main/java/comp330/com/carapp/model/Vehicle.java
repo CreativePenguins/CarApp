@@ -3,7 +3,7 @@ package comp330.com.carapp.model;
 /**
  * Created by aksharkumar on 4/2/16.
  */
-public class Vehicle {
+public class Vehicle implements VehicleInterface{
     private String make;
     private String model;
     private Integer year;

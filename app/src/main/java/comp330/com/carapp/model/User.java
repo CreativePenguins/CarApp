@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Created by aksharkumar on 3/31/16.
  */
-public class User {
+public class User implements UserInterface {
     private String username;
     private String password;
     private String imageURL;

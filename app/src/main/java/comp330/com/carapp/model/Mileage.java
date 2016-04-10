@@ -3,7 +3,7 @@ package comp330.com.carapp.model;
 /**
  * Created by aksharkumar on 4/2/16.
  */
-public class Mileage {
+public class Mileage implements MileageInterface{
     private Integer mileage;
     private String date;
 

@@ -3,7 +3,7 @@ package comp330.com.carapp.model;
 /**
  * Created by aksharkumar on 4/2/16.
  */
-public class Maintenance {
+public class Maintenance implements MaintenanceInterface{
     private String type;
     private String value;
     private String details;
