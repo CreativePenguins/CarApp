@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <description>Wiring the dependencies for the Car Application.</description>
+
+    <context:component-scan base-package="comp330.com.carapp" />
+
+    <bean id="maintenance" class="comp330.com.carapp.model.Maintenance" scope="prototype"/>
+    <bean id="mileage" class="comp330.com.carapp.model.Mileage" scope="prototype"/>
+    <bean id="user" class="comp330.com.carapp.model.User" scope="prototype"/>
+    <bean id="vehicleSettings" class="comp330.com.carapp.model.VehicleSettings" scope="prototype"/>
+
+    <bean id="vehicle" class="comp330.com.carapp.model.Vehicle" scope="prototype">
+        <property name="mileage" ref="mileage" />
+    </bean>
+
+    <!-- TODO include service classes as beans-->
+
+</beans>
