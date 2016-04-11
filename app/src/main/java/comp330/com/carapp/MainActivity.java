@@ -1,5 +1,8 @@
 package comp330.com.carapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,8 +16,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import comp330.com.carapp.fragments.dashboard.DashboardFragment;
+import comp330.com.carapp.fragments.maintenancelog.MaintenanceLogFragment;
+import comp330.com.carapp.fragments.mileagelog.MileageLogFragment;
+import comp330.com.carapp.fragments.reminders.RemindersFragment;
+import comp330.com.carapp.fragments.vehicleinfo.VehicleInfoFragment;
+import comp330.com.carapp.model.Vehicle;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, VehicleInfoFragment.OnFragmentInteractionListener,
+        MileageLogFragment.OnFragmentInteractionListener, MaintenanceLogFragment.OnFragmentInteractionListener,
+        DashboardFragment.OnFragmentInteractionListener, RemindersFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,24 +90,61 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment fragment = null;
+        Class fragmentClass;
         int id = item.getItemId();
-
-        if (id == R.id.nav_dashboard) {
-            // Handle the camera action
-        } else if (id == R.id.nav_vehicleinfo) {
-
-        } else if (id == R.id.nav_mileagelog) {
-
-        } else if (id == R.id.nav_maintenancelog) {
-
-        } else if (id == R.id.nav_reminders) {
-
-        } else if (id == R.id.nav_share) {
-
+        switch(id) {
+            case R.id.nav_dashboard:
+                fragmentClass = DashboardFragment.class;
+                break;
+            case R.id.nav_vehicleinfo:
+                fragmentClass = VehicleInfoFragment.class;
+                break;
+            case R.id.nav_mileagelog:
+                fragmentClass = MileageLogFragment.class;
+                break;
+            case R.id.nav_maintenancelog:
+                fragmentClass = MaintenanceLogFragment.class;
+                break;
+            case R.id.nav_reminders:
+                fragmentClass = RemindersFragment.class;
+                break;
+            default:
+                fragmentClass = DashboardFragment.class;
         }
 
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+
+
+        /*if (id == R.id.nav_dashboard) {
+            fragment = DashboardFragment.;
+            // Handle the camera action
+        } else if (id == R.id.nav_vehicleinfo) {
+            fragmentClass = VehicleInfoFragment.class;
+        } else if (id == R.id.nav_mileagelog) {
+            fragmentClass = MileageLogFragment.class;
+        } else if (id == R.id.nav_maintenancelog) {
+            fragmentClass = MaintenanceLogFragment.class;
+        } else if (id == R.id.nav_reminders) {
+            fragmentClass = RemindersFragment.class;
+        } *//*else if (id == R.id.nav_share) {
+
+        }*//*
+        fragment = (Fragment) fragmentClass.newInstance();*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {    }
 }

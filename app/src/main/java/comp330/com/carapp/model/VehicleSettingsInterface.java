@@ -6,5 +6,6 @@ package comp330.com.carapp.model;
 public interface VehicleSettingsInterface {
     public void setMileageUpdateFreq(Integer mileageUpdateFreq);
     public Integer getMileageUpdateFreq();
+    public void setMaintenanceToTrack(String s);
 }
 

@@ -29,4 +29,9 @@ public class VehicleSettingsTest {
         assertTrue(vs.getMileageUpdateFreq().equals(7));
     }
 
+    @Test
+    public void testSetMaintenanceToTrack(){
+
+    }
+
 }
