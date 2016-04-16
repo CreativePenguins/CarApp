@@ -53,6 +53,19 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //sets Dashboard as initial fragment instead of blank container
+        try {
+            Fragment fragment = DashboardFragment.class.newInstance();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
