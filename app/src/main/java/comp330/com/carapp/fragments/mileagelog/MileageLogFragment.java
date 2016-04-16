@@ -21,6 +21,12 @@ import comp330.com.carapp.R;
  * to handle interaction events.
  * Use the {@link MileageLogFragment#newInstance} factory method to
  * create an instance of this fragment.
+ *
+ * ListView with two columns
+ * http://stackoverflow.com/questions/23954936/listview-with-two-columns-within-a-fragment
+ *
+ * make two columns equal
+ * http://stackoverflow.com/questions/13441405/android-how-to-split-between-two-textview-the-full-width-of-screen-exactly-fifty
  */
 public class MileageLogFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
