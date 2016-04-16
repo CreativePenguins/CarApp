@@ -7,6 +7,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import comp330.com.carapp.R;
 
@@ -27,6 +31,11 @@ public class MileageLogFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ArrayList<HashMap<String, String>> list;
+    public static final String DATE_COLUMN = "Date Column";
+    public static final String MILEAGE_COLUMN = "Mileage Column";
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,7 +74,12 @@ public class MileageLogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mileage_log, container, false);
+        View view = inflater.inflate(R.layout.fragment_mileage_log, container, false);
+        ListView lview = (ListView)view.findViewById(R.id.mileageList);
+        populateList();
+        ListViewAdapter adapter = new ListViewAdapter(getActivity(), list);
+        lview.setAdapter(adapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,6 +119,28 @@ public class MileageLogFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+
+    private void populateList() {
+
+        list = new ArrayList<HashMap<String, String>>();
+
+        //get values from database here
+        HashMap<String, String> temp1 = new HashMap<String, String>();
+        temp1.put(DATE_COLUMN,"3/15/14");
+        temp1.put(MILEAGE_COLUMN, "12,000 miles");
+        list.add(temp1);
+
+        HashMap<String, String> temp2 = new HashMap<String, String>();
+        temp2.put(DATE_COLUMN,"3/29/14");
+        temp2.put(MILEAGE_COLUMN, "12,500 miles");
+        list.add(temp2);
+
+        HashMap<String, String> temp3 = new HashMap<String, String>();
+        temp3.put(DATE_COLUMN,"4/15/14");
+        temp3.put(MILEAGE_COLUMN, "13,000 miles");
+        list.add(temp3);
     }
 
 }
