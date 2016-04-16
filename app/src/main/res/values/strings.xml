@@ -6,6 +6,9 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="date_list_header"><b>Date</b></string>
+    <string name="mileage_list_header"><b>Mileage</b></string>
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

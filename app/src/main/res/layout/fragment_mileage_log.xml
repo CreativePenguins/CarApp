@@ -1,12 +1,31 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="comp330.com.carapp.fragments.mileagelog.MileageLogFragment">
+    tools:context="comp330.com.carapp.fragments.mileagelog.MileageLogFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ListView android:id="@+id/mileageList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2" >
 
-</FrameLayout>
+            <TextView android:id="@+id/date_column_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/date_list_header"/>
+
+            <TextView android:id="@+id/mileage_column_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/mileage_list_header"/>
+        </LinearLayout>
+
+        <ListView android:id="@+id/mileageList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ListView>
+</LinearLayout>
