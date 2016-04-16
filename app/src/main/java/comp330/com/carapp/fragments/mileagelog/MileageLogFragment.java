@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import comp330.com.carapp.R;
+import comp330.com.carapp.model.Mileage;
+import comp330.com.carapp.service.MileageService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +43,8 @@ public class MileageLogFragment extends Fragment {
     private ArrayList<HashMap<String, String>> list;
     public static final String DATE_COLUMN = "Date Column";
     public static final String MILEAGE_COLUMN = "Mileage Column";
+    //line below causes mileage log to crash
+    //private MileageService mileageService = new MileageService(getActivity());
 
 
     private OnFragmentInteractionListener mListener;
@@ -83,6 +87,7 @@ public class MileageLogFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_mileage_log, container, false);
         ListView lview = (ListView)view.findViewById(R.id.mileageList);
         populateList();
+        //getMileageList(1);
         ListViewAdapter adapter = new ListViewAdapter(getActivity(), list);
         lview.setAdapter(adapter);
         return view;
@@ -148,5 +153,16 @@ public class MileageLogFragment extends Fragment {
         temp3.put(MILEAGE_COLUMN, "13,000 miles");
         list.add(temp3);
     }
+/*
+    private void getMileageList(int vehicleID) {
+        ArrayList<Mileage> dbList = mileageService.getMileageList(vehicleID);
+        list = new ArrayList<HashMap<String, String>>();
+        for(Mileage mileage : dbList) {
+            HashMap<String, String> temp = new HashMap<String, String>();
+            temp.put(DATE_COLUMN, mileage.getDate());
+            temp.put(MILEAGE_COLUMN, mileage.getMileage().toString());
+            list.add(temp);
+        }
+    }*/
 
 }
