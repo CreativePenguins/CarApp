@@ -1,28 +1,19 @@
 package comp330.com.carapp.dal;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 /**
- * Created by Tyler on 4/10/16.
+ * DBHelper extends library found at https://github.com/jgilfelt/android-sqlite-asset-helper
  */
-public class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteAssetHelper {
 
-    private static final String DATABASE_NAME = "carData";
-    private static final int DATABASE_VER = 1;
+    private static final String DATABASE_NAME = "carData.db";
+    private static final int DATABASE_VERSION = 1;
 
     public DBHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VER);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
 }

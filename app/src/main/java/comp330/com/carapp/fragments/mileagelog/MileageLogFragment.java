@@ -43,8 +43,7 @@ public class MileageLogFragment extends Fragment {
     private ArrayList<HashMap<String, String>> list;
     public static final String DATE_COLUMN = "Date Column";
     public static final String MILEAGE_COLUMN = "Mileage Column";
-    //line below causes mileage log to crash
-    //private MileageService mileageService = new MileageService(getActivity());
+    private MileageService mileageService;
 
 
     private OnFragmentInteractionListener mListener;
@@ -78,16 +77,20 @@ public class MileageLogFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        mileageService = new MileageService(getActivity());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        mileageService = new MileageService(getActivity());
         View view = inflater.inflate(R.layout.fragment_mileage_log, container, false);
         ListView lview = (ListView)view.findViewById(R.id.mileageList);
-        populateList();
-        //getMileageList(1);
+        //populateSampleList();
+
+        //need to put correct vehicleID in to generate mileage list
+        generateMileageList(1);
         ListViewAdapter adapter = new ListViewAdapter(getActivity(), list);
         lview.setAdapter(adapter);
         return view;
@@ -133,7 +136,7 @@ public class MileageLogFragment extends Fragment {
     }
 
 
-    private void populateList() {
+    private void populateSampleList() {
 
         list = new ArrayList<HashMap<String, String>>();
 
@@ -153,16 +156,18 @@ public class MileageLogFragment extends Fragment {
         temp3.put(MILEAGE_COLUMN, "13,000 miles");
         list.add(temp3);
     }
-/*
-    private void getMileageList(int vehicleID) {
+
+    private void generateMileageList(int vehicleID) {
         ArrayList<Mileage> dbList = mileageService.getMileageList(vehicleID);
         list = new ArrayList<HashMap<String, String>>();
-        for(Mileage mileage : dbList) {
-            HashMap<String, String> temp = new HashMap<String, String>();
-            temp.put(DATE_COLUMN, mileage.getDate());
-            temp.put(MILEAGE_COLUMN, mileage.getMileage().toString());
-            list.add(temp);
+        if(dbList.size() > 0) {
+            for(Mileage mileage : dbList) {
+                HashMap<String, String> temp = new HashMap<String, String>();
+                temp.put(DATE_COLUMN, mileage.getDate());
+                temp.put(MILEAGE_COLUMN, mileage.getMileage().toString());
+                list.add(temp);
+            }
         }
-    }*/
+    }
 
 }
