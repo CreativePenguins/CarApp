@@ -7,8 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import comp330.com.carapp.R;
+import comp330.com.carapp.model.Mileage;
+import comp330.com.carapp.model.MileageInterface;
+import comp330.com.carapp.service.MileageService;
 
 /**
  * Created by Chrissy on 4/18/2016.
@@ -16,8 +20,10 @@ import comp330.com.carapp.R;
 public class AddMileageDialog extends DialogFragment {
 
     private int vehicleID;
+    private MileageService mileageService;
+
     /**
-     * Create a new instance of MyDialogFragment, providing "num"
+     * Create a new instance of MyDialogFragment, providing the vehicleID
      * as an argument.
      */
     public static AddMileageDialog newInstance(int vehicleID) {
@@ -34,7 +40,7 @@ public class AddMileageDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vehicleID = getArguments().getInt("num");
+        vehicleID = getArguments().getInt("vehicleID");
     }
 
     @Override
@@ -42,13 +48,22 @@ public class AddMileageDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.add_mileage_dialog, container, false);
         getDialog().setTitle(R.string.add_mileage_title);
+
+        final EditText selectedDate = (EditText) v.findViewById(R.id.insertDate);
+        final EditText selectedMileage = (EditText) v.findViewById(R.id.insertMileage);
+
         // Watch for button clicks.
         Button addButton = (Button)v.findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // show snack bar toast when click add button
-                Snackbar.make(v, "Add Mileage Dialog", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                String date = selectedDate.getText().toString();
+                int mileage = Integer.parseInt(selectedMileage.getText().toString());
+                MileageInterface newMileage = new Mileage();
+                newMileage.setVehicleID(vehicleID);
+                newMileage.setDate(date);
+                newMileage.setMileage(mileage);
+                mileageService.addMileage(newMileage);
+                getDialog().cancel();
             }
         });
 

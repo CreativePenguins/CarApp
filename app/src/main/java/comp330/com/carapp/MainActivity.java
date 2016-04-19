@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Fragment f = getFragmentManager().findFragmentById(R.id.container);
                 if(f instanceof MileageLogFragment) {
-                    showAddMileageDialog(1);
+                    showAddMileageDialog(2);
                 } else {
                     Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
