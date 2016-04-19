@@ -1,5 +1,6 @@
 package comp330.com.carapp;
 
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 
 import comp330.com.carapp.fragments.dashboard.DashboardFragment;
 import comp330.com.carapp.fragments.maintenancelog.MaintenanceLogFragment;
+import comp330.com.carapp.fragments.mileagelog.AddMileageDialog;
 import comp330.com.carapp.fragments.mileagelog.MileageLogFragment;
 import comp330.com.carapp.fragments.reminders.RemindersFragment;
 import comp330.com.carapp.fragments.vehicleinfo.VehicleInfoFragment;
@@ -43,8 +45,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Fragment f = getFragmentManager().findFragmentById(R.id.container);
                 if(f instanceof MileageLogFragment) {
-                    Snackbar.make(view, "Add Mileage Dialog", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    showAddMileageDialog(1);
                 } else {
                     Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
@@ -171,4 +172,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {    }
+
+    public void showAddMileageDialog(int vehicleID) {
+        DialogFragment newFragment = AddMileageDialog.newInstance(vehicleID);
+        newFragment.show(getFragmentManager(), "add mileage dialog");
+    }
 }
