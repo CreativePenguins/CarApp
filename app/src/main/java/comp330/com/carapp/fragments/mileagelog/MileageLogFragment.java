@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 import comp330.com.carapp.R;
 import comp330.com.carapp.model.Mileage;
+import comp330.com.carapp.model.MileageInterface;
 import comp330.com.carapp.service.MileageService;
 
 /**
@@ -158,13 +159,13 @@ public class MileageLogFragment extends Fragment {
     }
 
     private void generateMileageList(int vehicleID) {
-        ArrayList<Mileage> dbList = mileageService.getMileageList(vehicleID);
+        ArrayList<MileageInterface> dbList = mileageService.getMileageList(vehicleID);
         list = new ArrayList<HashMap<String, String>>();
         if(dbList.size() > 0) {
-            for(Mileage mileage : dbList) {
+            for(MileageInterface mileage : dbList) {
                 HashMap<String, String> temp = new HashMap<String, String>();
                 temp.put(DATE_COLUMN, mileage.getDate());
-                temp.put(MILEAGE_COLUMN, mileage.getMileage().toString());
+                temp.put(MILEAGE_COLUMN, Integer.valueOf(mileage.getMileage()).toString());
                 list.add(temp);
             }
         }

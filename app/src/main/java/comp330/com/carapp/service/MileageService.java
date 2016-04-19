@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import comp330.com.carapp.model.Mileage;
 import comp330.com.carapp.dal.MileageDAO;
+import comp330.com.carapp.model.MileageInterface;
 
 
 /**
@@ -24,7 +25,7 @@ public class MileageService {
      * @param vehicleID selected vehicle to get the mileage for
      * @return an ArrayList of Mileage objects
      */
-    public ArrayList<Mileage> getMileageList(int vehicleID) {
+    public ArrayList<MileageInterface> getMileageList(int vehicleID) {
         try {
             return mileageDAO.getMileageList(vehicleID);
         } catch (Exception se) {
@@ -34,5 +35,13 @@ public class MileageService {
         return null;
     }
 
+    public void addMileage(MileageInterface newMileage) {
+        try {
+            mileageDAO.addMileage(newMileage);
+        } catch (Exception se) {
+            System.err.println("MileageService: Threw an exception adding to the mileage table.");
+            System.err.println(se.getMessage());
+        }
+    }
 
 }

@@ -4,8 +4,9 @@ package comp330.com.carapp.model;
  * Created by aksharkumar on 4/2/16.
  */
 public class Mileage implements MileageInterface{
-    private Integer mileage;
+    private int mileage;
     private String date;
+    private int vehicleID;
 
     public void setDate(String date) {
         this.date = date;
@@ -15,11 +16,19 @@ public class Mileage implements MileageInterface{
         return date;
     }
 
-    public void setMileage(Integer mileage) {
+    public void setMileage(int mileage) {
         this.mileage = mileage;
     }
 
-    public Integer getMileage() {
+    public int getMileage() {
         return mileage;
+    }
+
+    public int getVehicleID() {
+        return vehicleID;
+    }
+
+    public void setVehicleID(int vehicleID) {
+        this.vehicleID = vehicleID;
     }
 }

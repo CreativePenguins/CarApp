@@ -8,7 +8,11 @@ public interface MileageInterface {
 
     public String getDate();
 
-    public void setMileage(Integer mileage);
+    public void setMileage(int mileage);
 
-    public Integer getMileage();
+    public int getMileage();
+
+    public int getVehicleID();
+
+    public void setVehicleID(int vehicleID);
 }

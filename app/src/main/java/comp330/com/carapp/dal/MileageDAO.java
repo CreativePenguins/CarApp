@@ -1,5 +1,6 @@
 package comp330.com.carapp.dal;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import comp330.com.carapp.model.Mileage;
+import comp330.com.carapp.model.MileageInterface;
 
 /**
  * Mileage data access object
@@ -35,8 +37,8 @@ public class MileageDAO {
      * @param vehicleID selected vehicle to get the mileage for
      * @return an ArrayList of Mileage objects
      */
-    public ArrayList<Mileage> getMileageList(int vehicleID) {
-        ArrayList<Mileage> list = new ArrayList<>();
+    public ArrayList<MileageInterface> getMileageList(int vehicleID) {
+        ArrayList<MileageInterface> list = new ArrayList<>();
 
         String selectMileageQuery = "SELECT * FROM Mileage WHERE vehicle_id = " + vehicleID;
 
@@ -48,8 +50,8 @@ public class MileageDAO {
                 // looping through all rows and adding to list
                 if (cursor.moveToFirst()) {
                     do {
-                        Mileage mileage = new Mileage();
-                        //only one column
+                        MileageInterface mileage = new Mileage();
+                        mileage.setVehicleID(cursor.getInt(1));
                         mileage.setDate(cursor.getString(2));
                         mileage.setMileage(cursor.getInt(3));
 
@@ -66,6 +68,23 @@ public class MileageDAO {
         }
 
         return list;
+    }
+
+    public void addMileage(MileageInterface newMileage) {
+
+        try {
+            ContentValues values = new ContentValues();
+            values.put("vehicle_id", newMileage.getVehicleID());
+            values.put("date", newMileage.getDate());
+            values.put("mileage", newMileage.getMileage());
+
+            database.insert("Mileage", null, values);
+        }
+        catch (Exception se) {
+            System.err.println("MileageDAO: Threw an exception adding to the mileage table.");
+            System.err.println(se.getMessage());
+        }
+
     }
 
 }
