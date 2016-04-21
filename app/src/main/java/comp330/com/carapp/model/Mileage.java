@@ -4,9 +4,9 @@ package comp330.com.carapp.model;
  * Created by aksharkumar on 4/2/16.
  */
 public class Mileage implements MileageInterface{
-    private int mileage = 0;
-    private String date = "";
-    private int vehicleID = 0;
+    private int mileage;
+    private String date;
+    private int vehicleID;
 
     @Override
     public void setDate(String date) {
