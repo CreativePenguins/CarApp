@@ -6,62 +6,77 @@ package comp330.com.carapp.model;
 public class Vehicle implements VehicleInterface{
     private String make;
     private String model;
-    private Integer year;
+    private int year;
     private String color;
     private String licensePlate;
     private String VIN;
-    private Mileage mileage;
+    private MileageInterface mileage;
 
+    @Override
     public void setMake(String make) {
         this.make = make;
     }
 
+    @Override
     public String getMake(){ return make; }
 
+    @Override
     public void setModel(String model) {
         this.model = model;
     }
 
+    @Override
     public String getModel() {
         return model;
     }
 
-    public void setYear(Integer year) {
+    @Override
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public Integer getYear() {
+    @Override
+    public int getYear() {
         return year;
     }
 
+    @Override
     public void setColor(String color) {
         this.color = color;
     }
 
+    @Override
     public String getColor() {
         return color;
     }
 
+    @Override
     public String getLicensePlate() {
         return licensePlate;
     }
 
+    @Override
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
     }
 
+    @Override
     public void setVIN(String VIN) {
         this.VIN = VIN;
     }
 
+    @Override
     public String getVIN() {
         return VIN;
     }
 
-    public void updateMileage(Integer i) {
+    @Override
+    public void setMileage(Integer i) {
         mileage.setMileage(i);
     }
-    public Mileage getMileage() {
+
+    @Override
+    public MileageInterface getMileage() {
         return mileage;
     }
 }

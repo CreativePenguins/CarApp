@@ -10,7 +10,7 @@ public interface UserInterface {
     public String getPassword();
     public void setImageURL(String imageURL);
     public String getImageURL();
-    public void addVehicle(Vehicle v);
+    public void addVehicle(VehicleInterface v);
     //this method could introduce potential bugs
-    public Vehicle getVehicle(String s);
+    public VehicleInterface getVehicle(String s);
 }
