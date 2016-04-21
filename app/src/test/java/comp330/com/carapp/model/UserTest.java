@@ -37,6 +37,17 @@ public class UserTest {
         assertEquals(u.getPassword(), "password123");
         assertFalse(u.getPassword() == "password");
     }
+
+    @Test
+    public void testImageURL() {
+        u.setImageURL("https://www.google.com/imgres?imgurl=http://automobiles.honda.com/.png" +
+                "&imgrefurl=http://automobiles.honda.com/accord-sedan/price.aspx&h=450&w=550&tbnid=Gv5fwN0E" +
+                "q2QyXM:&tbnh=163&tbnw=200&docid=saNb-YBMu-LQ9M&itg=1&usg=__ptyXcchw8rtHWP2ppTJxNh");
+        assertEquals(u.getImageURL(), "https://www.google.com/imgres?imgurl=http://automobiles.honda.com/.png" +
+                "&imgrefurl=http://automobiles.honda.com/accord-sedan/price.aspx&h=450&w=550&tbnid=Gv5fwN0E" +
+                "q2QyXM:&tbnh=163&tbnw=200&docid=saNb-YBMu-LQ9M&itg=1&usg=__ptyXcchw8rtHWP2ppTJxNh");
+        assertFalse(u.getImageURL() == "https://www.google.com/?gws_rd=ssl#q=honnda+accord");
+    }
     @Test
     public void testExample() {
         u.setUsername("carUser");
