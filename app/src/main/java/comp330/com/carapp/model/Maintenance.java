@@ -8,26 +8,32 @@ public class Maintenance implements MaintenanceInterface{
     private String value;
     private String details;
 
+    @Override
     public void setType(String type) {
         this.type = type;
     }
 
+    @Override
     public String getType() {
         return type;
     }
 
+    @Override
     public void setValue(String value) {
         this.value = value;
     }
 
+    @Override
     public String getValue() {
         return value;
     }
 
+    @Override
     public void setDetails(String details) {
         this.details = details;
     }
 
+    @Override
     public String getDetails() {
         return details;
     }
