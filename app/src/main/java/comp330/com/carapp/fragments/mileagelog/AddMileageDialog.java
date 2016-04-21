@@ -41,6 +41,7 @@ public class AddMileageDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         vehicleID = getArguments().getInt("vehicleID");
+        mileageService = new MileageService(getActivity());
     }
 
     @Override
@@ -49,6 +50,7 @@ public class AddMileageDialog extends DialogFragment {
         View v = inflater.inflate(R.layout.add_mileage_dialog, container, false);
         getDialog().setTitle(R.string.add_mileage_title);
 
+        mileageService = new MileageService(getActivity());
         final EditText selectedDate = (EditText) v.findViewById(R.id.insertDate);
         final EditText selectedMileage = (EditText) v.findViewById(R.id.insertMileage);
 
@@ -63,7 +65,7 @@ public class AddMileageDialog extends DialogFragment {
                 newMileage.setDate(date);
                 newMileage.setMileage(mileage);
                 mileageService.addMileage(newMileage);
-                getDialog().cancel();
+                getDialog().dismiss();
             }
         });
 
