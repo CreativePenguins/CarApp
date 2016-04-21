@@ -71,7 +71,7 @@ public class Vehicle implements VehicleInterface{
     }
 
     @Override
-    public void setMileage(Integer i) {
+    public void setMileage(int i) {
         mileage.setMileage(i);
     }
 
