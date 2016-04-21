@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
  * Created by aksharkumar on 4/2/16.
  */
 public class VehicleSettingsTest {
-    protected VehicleSettings vs;
+    protected VehicleSettingsInterface vs;
 
     @Before
     public void setUp() {
@@ -26,7 +26,7 @@ public class VehicleSettingsTest {
     @Test
     public void testMileageUpdateFreq() {
         vs.setMileageUpdateFreq(7);
-        assertTrue(vs.getMileageUpdateFreq().equals(7));
+        assertTrue(vs.getMileageUpdateFreq() == 7);
     }
 
     @Test

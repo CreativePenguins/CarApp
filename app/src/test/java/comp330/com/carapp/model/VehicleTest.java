@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
  * Created by aksharkumar on 4/2/16.
  */
 public class VehicleTest {
-    protected Vehicle v;
+    protected VehicleInterface v;
 
     @Before
     public void setUp() {
@@ -19,7 +19,9 @@ public class VehicleTest {
     }
 
     @After
-    public void tearDown() { v = null; }
+    public void tearDown() {
+        v = null;
+    }
 
     @Test
     public void testMake() {
@@ -38,7 +40,7 @@ public class VehicleTest {
     @Test
     public void testYear() {
         v.setYear(1994);
-        assertTrue(v.getYear().equals(1994));
+        assertTrue(v.getYear() == 1994);
     }
 
     @Test
