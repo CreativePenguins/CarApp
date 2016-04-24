@@ -4,6 +4,8 @@ package comp330.com.carapp.model;
  * Created by aksharkumar on 4/2/16.
  */
 public class Vehicle implements VehicleInterface{
+
+    private String name;
     private String make;
     private String model;
     private int year;
@@ -11,6 +13,16 @@ public class Vehicle implements VehicleInterface{
     private String licensePlate;
     private String VIN;
     private MileageInterface mileage;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public void setMake(String make) {

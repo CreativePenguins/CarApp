@@ -35,6 +35,10 @@ public class MileageService {
         return null;
     }
 
+    /**
+     * Adds a new mileage entry for a particular vehicle.
+     * @param newMileage entry
+     */
     public void addMileage(MileageInterface newMileage) {
         try {
             mileageDAO.addMileage(newMileage);

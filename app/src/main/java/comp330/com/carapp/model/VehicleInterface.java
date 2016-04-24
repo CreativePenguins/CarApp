@@ -4,6 +4,8 @@ package comp330.com.carapp.model;
  * Created by aksharkumar on 4/10/16.
  */
 public interface VehicleInterface {
+    public String getName();
+    public void setName(String name);
     public void setMake(String make);
     public String getMake();
     public void setModel(String model);
