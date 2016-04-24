@@ -32,4 +32,17 @@ public class VehicleService {
         return null;
     }
 
+    /**
+     * Adds a new vehicle.
+     * @param newVehicle to be added
+     */
+    public void addVehicle(VehicleInterface newVehicle) {
+        try {
+            vehicleDAO.addVehicle(newVehicle);
+        } catch (Exception se) {
+            System.err.println("VehicleService: Threw an exception adding to the VehicleData table.");
+            System.err.println(se.getMessage());
+        }
+    }
+
 }

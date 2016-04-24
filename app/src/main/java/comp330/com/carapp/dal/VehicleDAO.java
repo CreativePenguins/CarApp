@@ -26,7 +26,7 @@ public class VehicleDAO {
     public final static String VEHICLE_MODEL="model";
     public final static String VEHICLE_YEAR="year";
     public final static String VEHICLE_COLOR="color";
-    public final static String VECHILE_LicensePlate="license_plate";
+    public final static String VEHICLE_LicensePlate="license_plate";
 
 
     public VehicleDAO(Context context) {
@@ -35,15 +35,24 @@ public class VehicleDAO {
         database = mDbHelper.getWritableDatabase();
     }
 
-    public long createVehicle(String name, String make, String model, String year, String color, String plate) {
-        ContentValues values = new ContentValues();
-        values.put(VEHICLE_NAME, name);
-        values.put(VEHICLE_MAKE, make);
-        values.put(VEHICLE_MODEL, model);
-        values.put(VEHICLE_YEAR, year);
-        values.put(VEHICLE_COLOR, color);
-        values.put(VECHILE_LicensePlate, plate);
-        return database.insert(VEHICLE_TABLE, null, values);
+    public void addVehicle(VehicleInterface newVehicle) {
+
+        try {
+            ContentValues values = new ContentValues();
+            values.put(VEHICLE_NAME, newVehicle.getName());
+            values.put(VEHICLE_MAKE, newVehicle.getMake());
+            values.put(VEHICLE_MODEL, newVehicle.getModel());
+            values.put(VEHICLE_YEAR, newVehicle.getYear());
+            values.put(VEHICLE_COLOR, newVehicle.getColor());
+            values.put(VEHICLE_LicensePlate, newVehicle.getLicensePlate());
+
+            database.insert(VEHICLE_TABLE, null, values);
+        }
+        catch (Exception se) {
+            System.err.println("VehicleDAO: Threw an exception adding to the vehicle table.");
+            System.err.println(se.getMessage());
+        }
+
     }
 
     public Cursor selectVehicle() {
@@ -54,7 +63,7 @@ public class VehicleDAO {
                 VEHICLE_MODEL,
                 VEHICLE_YEAR,
                 VEHICLE_COLOR,
-                VECHILE_LicensePlate
+                VEHICLE_LicensePlate
         };
         Cursor mCursor = database.query(true, VEHICLE_TABLE, cols, null, null, null, null, null, null);
         if (mCursor != null) {
