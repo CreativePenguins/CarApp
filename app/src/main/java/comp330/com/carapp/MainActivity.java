@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -143,6 +144,10 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_reminders:
                 fragmentClass = RemindersFragment.class;
                 break;
+            case R.id.nav_github:
+                Uri url = Uri.parse("https://github.com/TAP1994/CarApp");
+                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, url);
+                startActivity(launchBrowser);
             default:
                 fragmentClass = DashboardFragment.class;
         }
