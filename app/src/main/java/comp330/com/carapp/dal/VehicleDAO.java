@@ -55,6 +55,48 @@ public class VehicleDAO {
 
     }
 
+    public VehicleInterface getVehicle(int vehicleID) {
+
+        VehicleInterface vehicle = new Vehicle();
+
+        String selectVehicleQuery = "SELECT * FROM VehicleData WHERE vehicle_id = " + vehicleID;
+
+        try {
+
+            Cursor cursor = database.rawQuery(selectVehicleQuery, null);
+            try {
+
+                // looping through all rows and adding to list
+                if (cursor.moveToFirst()) {
+                    do {
+                        vehicle.setName(cursor.getString(1));
+                        vehicle.setMake(cursor.getString(2));
+                        vehicle.setModel(cursor.getString(3));
+                        vehicle.setYear(cursor.getInt(4));
+                        vehicle.setColor(cursor.getString(5));
+                        vehicle.setLicensePlate(cursor.getString(6));
+
+                    } while (cursor.moveToNext());
+                }
+
+                return vehicle;
+
+            } finally {
+                try { cursor.close(); } catch (Exception se) {
+                    System.err.println("VehicleDAO: Threw an exception getting a vehicle.");
+                    System.err.println(se.getMessage());
+                }
+            }
+
+        } finally {
+            try { database.close(); } catch (Exception se) {
+                System.err.println("VehicleDAO: Threw an exception getting a vehicle.");
+                System.err.println(se.getMessage());
+            }
+        }
+
+    }
+
     public Cursor selectVehicle() {
         String[] cols = new String[] {
                 VEHICLE_ID,
@@ -102,11 +144,17 @@ public class VehicleDAO {
                 }
 
             } finally {
-                try { cursor.close(); } catch (Exception ignore) {}
+                try { cursor.close(); } catch (Exception se) {
+                    System.err.println("VehicleDAO: Threw an exception getting list of vehicles.");
+                    System.err.println(se.getMessage());
+                }
             }
 
         } finally {
-            try { database.close(); } catch (Exception ignore) {}
+            try { database.close(); } catch (Exception se) {
+                System.err.println("VehicleDAO: Threw an exception getting list of vehicles.");
+                System.err.println(se.getMessage());
+            }
         }
 
         return list;
