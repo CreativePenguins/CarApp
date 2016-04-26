@@ -32,21 +32,9 @@ public class MileageTest {
 
     @Test
     public void testMileage() {
-        m.setMileage("4284");
-        assertEquals(m.getMileage(), "4284");
-        assertFalse(m.getMileage() == "2019");
+        m.setMileage(4284);
+        assertEquals(m.getMileage(), 4284);
+        assertFalse(m.getMileage() == 2019);
     }
-
-    @Test
-    public void testVehicleID() {
-        m.setVehicleID("2G5HK690LS3949HUQ");
-        assertEquals(m.getVehicleID(), "2G5HK690LS3949HUQ");
-        assertFalse(m.setVehicleID() == "2XMI10RK5Y6FIWHR3");
-
-    }
-
-
-
-
 
 }

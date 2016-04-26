@@ -15,4 +15,8 @@ public interface MaintenanceInterface {
     public void setDetails(String details);
 
     public String getDetails();
+
+    public MileageInterface getMileage();
+
+    public void setMileage(MileageInterface mileage);
 }

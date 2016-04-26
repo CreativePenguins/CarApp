@@ -4,9 +4,11 @@ package comp330.com.carapp.model;
  * Created by aksharkumar on 4/2/16.
  */
 public class Maintenance implements MaintenanceInterface{
+
     private String type;
     private String value;
     private String details;
+    private MileageInterface mileage;
 
     @Override
     public void setType(String type) {
@@ -36,5 +38,13 @@ public class Maintenance implements MaintenanceInterface{
     @Override
     public String getDetails() {
         return details;
+    }
+
+    public MileageInterface getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(MileageInterface mileage) {
+        this.mileage = mileage;
     }
 }
