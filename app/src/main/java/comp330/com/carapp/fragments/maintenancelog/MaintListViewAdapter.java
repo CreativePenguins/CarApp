@@ -1,4 +1,4 @@
-package comp330.com.carapp.fragments.mileagelog;
+package comp330.com.carapp.fragments.maintenancelog;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -13,23 +13,17 @@ import java.util.HashMap;
 import comp330.com.carapp.R;
 
 /**
- * Created by Chrissy on 4/15/2016.
+ * Created by Chrissy on 4/26/2016.
  */
-public class ListViewAdapter extends BaseAdapter {
+public class MaintListViewAdapter extends BaseAdapter {
 
     public static final String DATE_COLUMN = "Date Column";
+    public static final String TYPE_COLUMN = "Type Column";
     public static final String MILEAGE_COLUMN = "Mileage Column";
+    public static final String DETAILS_COLUMN = "Details Column";
 
     public ArrayList<HashMap<String,String>> list;
     Activity activity;
-
-
-    public ListViewAdapter(Activity activity, ArrayList<HashMap<String,String>> list) {
-        super();
-        this.activity = activity;
-        this.list = list;
-    }
-
 
     @Override
     public int getCount() {
@@ -49,6 +43,9 @@ public class ListViewAdapter extends BaseAdapter {
     private class ViewHolder {
         TextView txtFirst;
         TextView txtSecond;
+        TextView txtThird;
+        TextView txtFourth;
+
     }
 
     @Override
@@ -58,6 +55,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         if (convertView == null)
         {
+            //TODO change to maintenance row
             convertView = inflater.inflate(R.layout.mileage_row, null);
             holder = new ViewHolder();
             holder.txtFirst = (TextView) convertView.findViewById(R.id.date);
@@ -71,9 +69,12 @@ public class ListViewAdapter extends BaseAdapter {
 
         HashMap<String, String> map = list.get(position);
         holder.txtFirst.setText(map.get(DATE_COLUMN));
-        holder.txtSecond.setText(map.get(MILEAGE_COLUMN));
+        holder.txtSecond.setText(map.get(TYPE_COLUMN));
+        holder.txtThird.setText(map.get(MILEAGE_COLUMN));
+        holder.txtFourth.setText(map.get(DETAILS_COLUMN));
 
 
         return convertView;
     }
+
 }
