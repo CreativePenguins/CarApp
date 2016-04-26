@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import comp330.com.carapp.R;
-import comp330.com.carapp.model.Mileage;
 import comp330.com.carapp.model.MileageInterface;
 import comp330.com.carapp.service.MileageService;
 
@@ -92,7 +91,7 @@ public class MileageLogFragment extends Fragment {
 
         //need to put correct vehicleID in to generate mileage list
         generateMileageList(1);
-        ListViewAdapter adapter = new ListViewAdapter(getActivity(), list);
+        MileageListViewAdapter adapter = new MileageListViewAdapter(getActivity(), list);
         lview.setAdapter(adapter);
         return view;
     }

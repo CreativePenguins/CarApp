@@ -1,5 +1,7 @@
 package comp330.com.carapp.fragments.mileagelog;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -7,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+
+import java.util.Calendar;
 
 import comp330.com.carapp.R;
 import comp330.com.carapp.model.Mileage;
@@ -21,6 +26,8 @@ public class AddMileageDialog extends DialogFragment {
 
     private int vehicleID;
     private MileageService mileageService;
+    private static EditText selectedDate;
+    private EditText selectedMileage;
 
     /**
      * Create a new instance of MyDialogFragment, providing the vehicleID
@@ -51,8 +58,8 @@ public class AddMileageDialog extends DialogFragment {
         getDialog().setTitle(R.string.add_mileage_title);
 
         mileageService = new MileageService(getActivity());
-        final EditText selectedDate = (EditText) v.findViewById(R.id.insertDate);
-        final EditText selectedMileage = (EditText) v.findViewById(R.id.insertMileage);
+        selectedDate = (EditText) v.findViewById(R.id.insertDate);
+        selectedMileage = (EditText) v.findViewById(R.id.insertMileage);
 
         // Watch for button clicks.
         Button addButton = (Button)v.findViewById(R.id.addButton);
@@ -69,6 +76,16 @@ public class AddMileageDialog extends DialogFragment {
             }
         });
 
+        selectedDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //showDialog(DATEINIT_DIALOG);
+                DatePickerFragment newFragment = new DatePickerFragment();
+                newFragment.show(getFragmentManager(), "add mileage dialog");
+            }
+
+        });
+
         Button closeButton = (Button)v.findViewById(R.id.closeButton);
         closeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -78,4 +95,38 @@ public class AddMileageDialog extends DialogFragment {
         });
         return v;
     }
+
+    public static class DatePickerFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            String date = String.valueOf(year);
+            if (month < 10) {
+                date += "0" + String.valueOf(month);
+            } else {
+                date += month;
+            }
+
+            if (day < 10) {
+                date += "0" + String.valueOf(day);
+            } else {
+                date += day;
+            }
+            selectedDate.setText(date);
+        }
+    }
 }
+
+

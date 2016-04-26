@@ -16,8 +16,6 @@ import comp330.com.carapp.model.MileageInterface;
  */
 public class MileageDAO {
 
-    protected static final String TAG = "MileageDAO";
-
     private final Context mContext;
     private SQLiteDatabase database;
     private DBHelper mDbHelper;

@@ -10,7 +10,8 @@
         android:inputType="date"
         android:ems="10"
         android:id="@+id/insertDate"
-        android:hint="Select date" />
+        android:hint="Select date"
+        android:focusable="false"/>
 
     <EditText
         android:layout_width="match_parent"

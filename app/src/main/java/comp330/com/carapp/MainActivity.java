@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import comp330.com.carapp.fragments.dashboard.DashboardFragment;
 import comp330.com.carapp.fragments.maintenancelog.MaintenanceLogFragment;
@@ -26,11 +28,16 @@ import comp330.com.carapp.fragments.mileagelog.MileageLogFragment;
 import comp330.com.carapp.fragments.reminders.RemindersFragment;
 import comp330.com.carapp.fragments.vehicleinfo.VehicleInfoFragment;
 import comp330.com.carapp.model.Vehicle;
+import comp330.com.carapp.model.VehicleInterface;
+import comp330.com.carapp.service.VehicleService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, VehicleInfoFragment.OnFragmentInteractionListener,
         MileageLogFragment.OnFragmentInteractionListener, MaintenanceLogFragment.OnFragmentInteractionListener,
         DashboardFragment.OnFragmentInteractionListener, RemindersFragment.OnFragmentInteractionListener{
+
+    VehicleInterface selectedVehicle = null;
+    VehicleService vehicleService = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // by default, shows 1st vehicle.
+        // TODO add drop down selection to select vehicle
+        vehicleService = new VehicleService(this.getBaseContext());
+        setSelectedVehicle(1);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +86,6 @@ public class MainActivity extends AppCompatActivity
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -132,6 +144,10 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_reminders:
                 fragmentClass = RemindersFragment.class;
                 break;
+            case R.id.nav_github:
+                Uri url = Uri.parse("https://github.com/TAP1994/CarApp");
+                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, url);
+                startActivity(launchBrowser);
             default:
                 fragmentClass = DashboardFragment.class;
         }
@@ -176,5 +192,17 @@ public class MainActivity extends AppCompatActivity
     public void showAddMileageDialog(int vehicleID) {
         DialogFragment newFragment = AddMileageDialog.newInstance(vehicleID);
         newFragment.show(getFragmentManager(), "add mileage dialog");
+    }
+
+    public void setSelectedVehicle(int vehicleID) {
+        this.selectedVehicle = vehicleService.getVehicle(vehicleID);
+        TextView headerTitle = (TextView) (findViewById(R.id.nav_view)).findViewById(R.id.navHeaderTitle);
+        headerTitle.setText(selectedVehicle.getName());
+        TextView headerSubtitle = (TextView) (findViewById(R.id.nav_view)).findViewById(R.id.navHeaderSubtitle);
+        headerSubtitle.setText(selectedVehicle.getMake() + ' ' + selectedVehicle.getModel());
+    }
+
+    public VehicleInterface getSelectedVehicle() {
+        return this.selectedVehicle;
     }
 }

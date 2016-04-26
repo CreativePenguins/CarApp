@@ -27,9 +27,9 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_github"
+                android:icon="@drawable/ic_menu_github"
+                android:title="GitHub" />
         </menu>
     </item>
 
