@@ -6,10 +6,33 @@ import java.util.HashMap;
  * Created by aksharkumar on 3/31/16.
  */
 public class User implements UserInterface {
+    private String name;
     private String username;
     private String password;
+    private String licenseNo;
     private String imageURL;
     private HashMap<String, VehicleInterface> vehicles = new HashMap<>();
+
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setLicNo(String LicNo) {
+        this.licenseNo = LicNo;
+    }
+
+    @Override
+    public String getLicNo() {
+        return licenseNo;
+    }
 
     @Override
     public void setUsername (String username) {
