@@ -40,10 +40,12 @@ public class Maintenance implements MaintenanceInterface{
         return details;
     }
 
+    @Override
     public MileageInterface getMileage() {
         return mileage;
     }
 
+    @Override
     public void setMileage(MileageInterface mileage) {
         this.mileage = mileage;
     }
