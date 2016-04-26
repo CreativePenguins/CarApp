@@ -11,6 +11,7 @@ public class User implements UserInterface {
     private String password;
     private String licenseNo;
     private String imageURL;
+    //private String vehicle_id;
     private HashMap<String, VehicleInterface> vehicles = new HashMap<>();
 
 
