@@ -2,8 +2,10 @@ package comp330.com.carapp.dal;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import comp330.com.carapp.model.Maintenance;
 import comp330.com.carapp.model.MaintenanceInterface;
 
 /**
@@ -43,5 +45,36 @@ public class MaintDAO {
         }
     }
 
-    public
+    public MaintenanceInterface getMaint(int maintID) {
+        MaintenanceInterface maint = new Maintenance();
+        String selectMaintQuery = "SELECT * FROM Maintenance WHERE maintenance_id = " + maint;
+        try {
+            Cursor cursor = database.rawQuery(selectMaintQuery, null);
+            try {
+                if (cursor.moveToFirst()) {
+                    do {
+                        maint.setDetails(cursor.getString(4));
+                        //maint.setMileage(cursor.getString(1));
+                        maint.setType(cursor.getString(2));
+                        maint.setValue(cursor.getString(3));
+                    } while (cursor.moveToNext());
+                }
+                return maint;
+            } finally {
+                try {
+                    cursor.close();
+                } catch (Exception e) {
+                    System.err.println("MaintDAO: Threw an exception getting a vehicle.");
+                    System.err.println(e.getMessage());
+                }
+            }
+        } finally {
+            try {
+                database.close();
+            } catch (Exception e) {
+                System.err.println("MaintDAO: Threw an exception getting a vehicle.");
+                System.err.println(e.getMessage());
+            }
+        }
+    }
 }
