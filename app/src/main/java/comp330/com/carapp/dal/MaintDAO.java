@@ -47,7 +47,7 @@ public class MaintDAO {
 
     public MaintenanceInterface getMaint(int maintID) {
         MaintenanceInterface maint = new Maintenance();
-        String selectMaintQuery = "SELECT * FROM Maintenance WHERE maintenance_id = " + maint;
+        String selectMaintQuery = "SELECT * FROM Maintenance WHERE maintenance_id = " + maintID;
         try {
             Cursor cursor = database.rawQuery(selectMaintQuery, null);
             try {
