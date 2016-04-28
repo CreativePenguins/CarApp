@@ -21,10 +21,9 @@
         android:hint="Select mileage"
         android:layout_below="@id/insertMaintDate"/>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:ems="10"
         android:id="@+id/insertMaintType"
         android:hint="Select maintenance type"

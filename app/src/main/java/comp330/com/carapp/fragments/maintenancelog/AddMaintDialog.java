@@ -1,9 +1,11 @@
 package comp330.com.carapp.fragments.maintenancelog;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -33,7 +36,7 @@ public class AddMaintDialog extends DialogFragment {
     private int vehicleID;
     private MaintService maintService;
     private static EditText selectedmaintDate;
-    private static EditText selectmaintType;
+    private static TextView selectmaintType;
     private static EditText selectedmaintMileage;
 
     /**
@@ -67,7 +70,7 @@ public class AddMaintDialog extends DialogFragment {
         maintService = new MaintService(getActivity());
         selectedmaintDate = (EditText) v.findViewById(R.id.insertMaintDate);
         selectedmaintMileage = (EditText) v.findViewById(R.id.insertMaintMileage);
-        selectmaintType = (EditText) v.findViewById(R.id.insertMaintType);
+        selectmaintType = (TextView) v.findViewById(R.id.insertMaintType);
 
         // Watch for button clicks.
         Button addButton = (Button)v.findViewById(R.id.addButton);
@@ -92,14 +95,15 @@ public class AddMaintDialog extends DialogFragment {
             public void onClick(View v) {
                 //showDialog(DATEINIT_DIALOG);
                 DatePickerFragment newFragment = new DatePickerFragment();
-                newFragment.show(getFragmentManager(), "add mileage dialog");
+                newFragment.show(getFragmentManager(), "add maintenance dialog");
             }
 
         });
         selectmaintType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                MaintTypeFragment maintTypeFragment = new MaintTypeFragment();
+                maintTypeFragment.show(getFragmentManager(), "add maintenance type");
             }
         });
 
@@ -112,7 +116,23 @@ public class AddMaintDialog extends DialogFragment {
         });
         return v;
     }
-
+    public static class MaintTypeFragment extends DialogFragment {
+        String[] mainttypes = {"Oil Change", "Brakes", "Tire Rotation", "Air Filter"};
+        int selectedItem = 0;
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Pick a Maintenance Type")
+                    .setSingleChoiceItems(mainttypes, selectedItem, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            selectmaintType.setText(mainttypes[which]);
+                            dialog.dismiss();
+                        }
+                    });
+            return builder.create();
+        }
+    }
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
