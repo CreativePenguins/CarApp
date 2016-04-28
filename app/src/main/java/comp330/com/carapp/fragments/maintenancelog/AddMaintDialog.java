@@ -17,7 +17,9 @@ import android.widget.EditText;
 import java.util.Calendar;
 
 import comp330.com.carapp.R;
+import comp330.com.carapp.model.Maintenance;
 import comp330.com.carapp.model.MaintenanceInterface;
+import comp330.com.carapp.model.Mileage;
 import comp330.com.carapp.model.MileageInterface;
 import comp330.com.carapp.service.MaintService;
 
@@ -30,8 +32,9 @@ import comp330.com.carapp.service.MaintService;
 public class AddMaintDialog extends DialogFragment {
     private int vehicleID;
     private MaintService maintService;
-    private static EditText selectedDate;
-    private EditText selectedMileage;
+    private static EditText selectedmaintDate;
+    private static EditText selectmaintType;
+    private static EditText selectedmaintMileage;
 
     /**
      * Create a new instance of MyDialogFragment, providing the vehicleID
@@ -61,26 +64,30 @@ public class AddMaintDialog extends DialogFragment {
         View v = inflater.inflate(R.layout.add_maint_dialog, container, false);
         getDialog().setTitle(R.string.add_maint_title);
 
-        /*maintService = new MaintService(getActivity());
-        selectedDate = (EditText) v.findViewById(R.id.insertDate);
-        selectedMileage = (EditText) v.findViewById(R.id.insertMileage);
+        maintService = new MaintService(getActivity());
+        selectedmaintDate = (EditText) v.findViewById(R.id.insertMaintDate);
+        selectedmaintMileage = (EditText) v.findViewById(R.id.insertMaintMileage);
+        selectmaintType = (EditText) v.findViewById(R.id.insertMaintType);
 
         // Watch for button clicks.
         Button addButton = (Button)v.findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String date = selectedDate.getText().toString();
-                int mileage = Integer.parseInt(selectedMileage.getText().toString());
-                MaintenanceInterface newMaintenance = new Maintenance()
-                newMileage.setVehicleID(vehicleID);
-                newMileage.setDate(date);
-                newMileage.setMileage(mileage);
-                mileageService.addMileage(newMileage);
+                String date = selectedmaintDate.getText().toString();
+                String type = selectmaintType.getText().toString();
+                MileageInterface mileage = new Mileage();
+                mileage.setMileage(Integer.parseInt(selectedmaintMileage.getText().toString()));
+                MaintenanceInterface newMaintenance = new Maintenance();
+                //newMaintenance.setVehicleID(vehicleID);
+                //newMaintenance.setDate(date);
+                newMaintenance.setType(type);
+                newMaintenance.setMileage(mileage);
+                maintService.addMaint(newMaintenance);
                 getDialog().dismiss();
             }
         });
 
-        selectedDate.setOnClickListener(new View.OnClickListener() {
+        selectedmaintDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //showDialog(DATEINIT_DIALOG);
@@ -88,7 +95,13 @@ public class AddMaintDialog extends DialogFragment {
                 newFragment.show(getFragmentManager(), "add mileage dialog");
             }
 
-        });*/
+        });
+        selectmaintType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         Button closeButton = (Button)v.findViewById(R.id.closeButton);
         closeButton.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +141,7 @@ public class AddMaintDialog extends DialogFragment {
             } else {
                 date += day;
             }
-            selectedDate.setText(date);
+            selectedmaintDate.setText(date);
         }
     }
 }
