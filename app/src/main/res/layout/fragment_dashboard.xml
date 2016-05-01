@@ -1,13 +1,82 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id = "@+id/dashboard"
-    tools:context="comp330.com.carapp.fragments.dashboard.DashboardFragment" >
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dashboard"
+    tools:context="comp330.com.carapp.fragments.dashboard.DashboardFragment">
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_gravity="center_horizontal|top" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"/>
+
+        <com.github.lzyzsd.circleprogress.ArcProgress
+            android:id="@+id/arc_progress"
+            android:background="@null"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            custom:arc_finished_color="@color/colorPrimary"
+            custom:arc_unfinished_color="@color/gray"
+            custom:arc_text_size="70dp"
+            custom:arc_suffix_text_size="30dp"
+            custom:arc_bottom_text_size="20dp"
+            custom:arc_progress="35"
+            custom:arc_bottom_text="OIL CHANGE"
+            android:layout_gravity="center_horizontal|top" />
+        <!-- set arc_progress to int -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last at"
+                android:gravity="start"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next at"
+                android:gravity="end"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3,000 miles"
+                android:id="@+id/textView"
+                android:gravity="start"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6,000 miles"
+                android:id="@+id/textView2"
+                android:gravity="end"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 </FrameLayout>
