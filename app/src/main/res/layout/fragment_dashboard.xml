@@ -27,7 +27,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4200 miles"
             android:id="@+id/currentMileage"
             android:layout_gravity="center_horizontal" />
 
@@ -61,7 +60,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3,000"
                     android:id="@+id/lastAtMileage"
                     android:gravity="start"
                     android:layout_weight="1"/>
@@ -84,10 +82,8 @@
                 custom:arc_text_size="70dp"
                 custom:arc_suffix_text_size="30dp"
                 custom:arc_bottom_text_size="20dp"
-                custom:arc_progress="35"
                 custom:arc_bottom_text="OIL CHANGE"
                 android:layout_gravity="center_horizontal|top" />
-            <!-- set arc_progress to int -->
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -105,7 +101,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:text="6,000"
                     android:id="@+id/nextAtMileage"
                     android:gravity="end"
                     android:layout_weight="1"/>

@@ -7,8 +7,16 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.github.lzyzsd.circleprogress.ArcProgress;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import comp330.com.carapp.R;
+import comp330.com.carapp.model.MaintenanceInterface;
+import comp330.com.carapp.service.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +37,8 @@ public class DashboardFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private MileageService mileageService;
+    private MaintService maintService;
 
     /**
      * Use this factory method to create a new instance of
@@ -59,13 +69,18 @@ public class DashboardFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        mileageService = new MileageService(getActivity());
+        maintService = new MaintService(getActivity());
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        updateMileageValues(view);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,6 +120,35 @@ public class DashboardFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    private void updateMileageValues(View view) {
+        TextView tvCurrentMileage = (TextView) view.findViewById(R.id.currentMileage);
+        TextView tvLastAtMileage = (TextView) view.findViewById(R.id.lastAtMileage);
+        TextView tvNextAtMileage = (TextView) view.findViewById(R.id.nextAtMileage);
+        ArcProgress arcProgress = (ArcProgress) view.findViewById(R.id.arc_progress);
+
+        int currentMileage = mileageService.getCurrentMileage(1).getMileage();
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        String formattedCurrentMileage = formatter.format(currentMileage) + " miles";
+        tvCurrentMileage.setText(formattedCurrentMileage);
+
+        ArrayList<MaintenanceInterface> oilChangeList = maintService.getMaintListByType("oil change");
+        MaintenanceInterface lastOilChange = oilChangeList.get(oilChangeList.size() - 1);
+        int lastOCMileage = lastOilChange.getMileage().getMileage();
+        String formattedLastOCMileage = formatter.format(lastOCMileage);
+        tvLastAtMileage.setText(formattedLastOCMileage);
+
+        int nextOCMileage = lastOCMileage + 3000;
+        String formattedNextOCMileage = formatter.format(nextOCMileage);
+        tvNextAtMileage.setText(formattedNextOCMileage);
+
+        // find difference between current mileage and last oil change mileage,
+        // divide it by 3000, then convert to percentage
+        // always rounds down to make sure it's never rounded up to 100%
+        int progress = (int) Math.floor((currentMileage - lastOCMileage) / 30);
+        arcProgress.setProgress(progress);
+
     }
 
 }

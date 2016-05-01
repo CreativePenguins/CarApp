@@ -86,7 +86,7 @@ public class MileageLogFragment extends Fragment {
         // Inflate the layout for this fragment
         mileageService = new MileageService(getActivity());
         View view = inflater.inflate(R.layout.fragment_mileage_log, container, false);
-        ListView lview = (ListView)view.findViewById(R.id.mileageList);
+        ListView lview = (ListView) view.findViewById(R.id.mileageList);
         //populateSampleList();
 
         //need to put correct vehicleID in to generate mileage list
