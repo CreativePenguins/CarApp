@@ -12,7 +12,9 @@
     <string name="add_mileage_title"><b>Record Mileage</b></string>
     <string name="add_maint_title"><b>Add Maintenance</b></string>
 
+    <string name="milesName">miles</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <array name="pick_maint_type_arr">{"Oil Change", "Brakes", "Air Filter"}</array>
+
+
 </resources>
