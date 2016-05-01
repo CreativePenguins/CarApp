@@ -44,10 +44,11 @@ public class MaintDAO {
 
             database.insert(MAINT_TABLE, null, values);
         } catch (Exception e) {
-            System.err.println("MaintDAO: Threw an exception adding to the vehicle table.");
+            System.err.println("MaintDAO: Threw an exception adding to the maintenance table.");
             System.err.println(e.getMessage());
         }
     }
+
     public ArrayList<MaintenanceInterface> getMaintList(int vehicleID) {
         ArrayList<MaintenanceInterface> list = new ArrayList<>();
 
@@ -83,6 +84,7 @@ public class MaintDAO {
 
         return list;
     }
+
     public MaintenanceInterface getMaint(int maintID) {
         MaintenanceInterface maint = new Maintenance();
         String selectMaintQuery = "SELECT * FROM Maintenance WHERE maintenance_id = " + maintID;
@@ -102,7 +104,7 @@ public class MaintDAO {
                 try {
                     cursor.close();
                 } catch (Exception e) {
-                    System.err.println("MaintDAO: Threw an exception getting a vehicle.");
+                    System.err.println("MaintDAO: Threw an exception getting a maintenance object.");
                     System.err.println(e.getMessage());
                 }
             }
@@ -110,7 +112,7 @@ public class MaintDAO {
             try {
                 database.close();
             } catch (Exception e) {
-                System.err.println("MaintDAO: Threw an exception getting a vehicle.");
+                System.err.println("MaintDAO: Threw an exception getting a maintenance object.");
                 System.err.println(e.getMessage());
             }
         }
