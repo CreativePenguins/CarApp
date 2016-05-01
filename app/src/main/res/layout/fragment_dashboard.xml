@@ -72,7 +72,7 @@
                     android:layout_weight="1"/>
             </LinearLayout>
 
-            <com.github.lzyzsd.circleprogress.ArcProgress
+            <comp330.com.carapp.fragments.dashboard.FixedArcProgress
                 android:id="@+id/arc_progress"
                 android:background="@null"
                 android:layout_width="250dp"

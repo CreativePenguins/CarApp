@@ -126,7 +126,7 @@ public class DashboardFragment extends Fragment {
         TextView tvCurrentMileage = (TextView) view.findViewById(R.id.currentMileage);
         TextView tvLastAtMileage = (TextView) view.findViewById(R.id.lastAtMileage);
         TextView tvNextAtMileage = (TextView) view.findViewById(R.id.nextAtMileage);
-        ArcProgress arcProgress = (ArcProgress) view.findViewById(R.id.arc_progress);
+        FixedArcProgress arcProgress = (FixedArcProgress) view.findViewById(R.id.arc_progress);
 
         int currentMileage = mileageService.getCurrentMileage(1).getMileage();
         DecimalFormat formatter = new DecimalFormat("###,###,###");
