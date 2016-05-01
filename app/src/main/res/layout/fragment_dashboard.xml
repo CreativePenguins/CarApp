@@ -6,95 +6,131 @@
     android:id="@+id/dashboard"
     tools:context="comp330.com.carapp.fragments.dashboard.DashboardFragment">
 
-    <Space
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_below="@+id/space"
-        android:gravity="center">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <Space
+            android:id="@+id/space1"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:weightSum="3">
+            android:text="Current Mileage:"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Last at"
-                android:gravity="start"
-                android:singleLine="false"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3,000"
-                android:id="@+id/lastAtMileage"
-                android:gravity="start"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="@string/milesName"
-                android:gravity="end"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
-        <com.github.lzyzsd.circleprogress.ArcProgress
-            android:id="@+id/arc_progress"
-            android:background="@null"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            custom:arc_finished_color="@color/colorPrimary"
-            custom:arc_unfinished_color="@color/gray"
-            custom:arc_text_size="70dp"
-            custom:arc_suffix_text_size="30dp"
-            custom:arc_bottom_text_size="20dp"
-            custom:arc_progress="35"
-            custom:arc_bottom_text="OIL CHANGE"
-            android:layout_gravity="center_horizontal|top" />
-        <!-- set arc_progress to int -->
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:weightSum="3">
+            android:text="4200 miles"
+            android:id="@+id/currentMileage"
+            android:layout_gravity="center_horizontal" />
 
-            <TextView
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Next at"
-                android:gravity="end" />
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:weightSum="3">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="6,000"
-                android:id="@+id/nextAtMileage"
-                android:gravity="end"
-                android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last at"
+                    android:gravity="start"
+                    android:singleLine="false"
+                    android:layout_weight="1"/>
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3,000"
+                    android:id="@+id/lastAtMileage"
+                    android:gravity="start"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/milesName"
+                    android:gravity="end"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <com.github.lzyzsd.circleprogress.ArcProgress
+                android:id="@+id/arc_progress"
+                android:background="@null"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                custom:arc_finished_color="@color/colorPrimary"
+                custom:arc_unfinished_color="@color/gray"
+                custom:arc_text_size="70dp"
+                custom:arc_suffix_text_size="30dp"
+                custom:arc_bottom_text_size="20dp"
+                custom:arc_progress="35"
+                custom:arc_bottom_text="OIL CHANGE"
+                android:layout_gravity="center_horizontal|top" />
+            <!-- set arc_progress to int -->
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="@string/milesName"
-                android:gravity="end"
-                android:layout_weight="1"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Next at"
+                    android:gravity="end" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="6,000"
+                    android:id="@+id/nextAtMileage"
+                    android:gravity="end"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/milesName"
+                    android:gravity="end"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
 
         </LinearLayout>
+
+
+
 
     </LinearLayout>
+
+
+
+
+
+
 
 
 </RelativeLayout>
