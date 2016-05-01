@@ -9,7 +9,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by aksharkumar on 4/2/16.
+ * Tests for the vehicle settings interface in model
  */
 public class VehicleSettingsTest {
     protected VehicleSettingsInterface vs;

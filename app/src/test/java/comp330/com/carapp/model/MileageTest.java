@@ -12,7 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by rohangrover on 4/20/16.
+ * Tests for the mileage interface in model
  */
 
 public class MileageTest {

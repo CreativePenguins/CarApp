@@ -11,7 +11,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by rohangrover on 4/20/16.
+ * Tests for the maintenance interface in model
  */
 
 public class MaintenanceTest {
