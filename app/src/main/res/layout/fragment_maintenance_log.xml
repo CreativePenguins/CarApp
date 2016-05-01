@@ -11,11 +11,11 @@
         android:orientation="horizontal"
         android:weightSum="2" >
 
-        <TextView android:id="@+id/date_column_header"
+        <TextView android:id="@+id/type_column_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/date_list_header"/>
+            android:text="@string/maint_type_list_header"/>
 
         <TextView android:id="@+id/mileage_column_header"
             android:layout_width="0dp"

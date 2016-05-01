@@ -8,6 +8,7 @@
 
     <string name="date_list_header"><b>Date</b></string>
     <string name="mileage_list_header"><b>Mileage</b></string>
+    <string name="maint_type_list_header"><b>Type</b></string>
     <string name="add_mileage_title"><b>Record Mileage</b></string>
     <string name="add_maint_title"><b>Add Maintenance</b></string>
 
