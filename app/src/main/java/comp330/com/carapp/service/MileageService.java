@@ -48,4 +48,19 @@ public class MileageService {
         }
     }
 
+    /**
+     * Gets the current mileage for a specific vehicle
+     * @param vehicleID selected vehicle to get the current mileage for
+     * @return a Mileage object representing the current mileage
+     */
+    public MileageInterface getCurrentMileage(int vehicleID) {
+        try {
+            return mileageDAO.getCurrentMileage(vehicleID);
+        } catch (Exception se) {
+            System.err.println("MileageService: Threw an exception getting the current mileage.");
+            System.err.println(se.getMessage());
+        }
+        return null;
+    }
+
 }

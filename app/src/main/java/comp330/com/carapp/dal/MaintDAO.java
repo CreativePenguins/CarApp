@@ -70,7 +70,7 @@ public class MaintDAO {
     public ArrayList<MaintenanceInterface> getMaintListByType(String type) {
         ArrayList<MaintenanceInterface> list = new ArrayList<>();
 
-        String selectMaintQuery = "SELECT * FROM Maintenance WHERE type = '" + type + "'";
+        String selectMaintQuery = "SELECT * FROM Maintenance WHERE type = '" + type + "' ORDER BY mileage ASC";
 
         try {
 
