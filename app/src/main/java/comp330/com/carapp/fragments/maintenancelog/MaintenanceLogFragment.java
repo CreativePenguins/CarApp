@@ -75,7 +75,7 @@ public class MaintenanceLogFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_maintenance_log, container, false);
         ListView lview = (ListView) view.findViewById(R.id.maintList);
-        generateMaintList(1);
+        generateMaintList("Oil Change");
         //populateSampleList();
         MaintListViewAdapter adapter = new MaintListViewAdapter(getActivity(), list);
         lview.setAdapter(adapter);
@@ -141,8 +141,8 @@ public class MaintenanceLogFragment extends Fragment {
         temp3.put(MILEAGE_COLUMN, "15,000 miles");
         list.add(temp3);
     }
-    private void generateMaintList(int vehicleID) {
-        ArrayList<MaintenanceInterface> dbList = maintService.getMaintList(vehicleID);
+    private void generateMaintList(String type) {
+        ArrayList<MaintenanceInterface> dbList = maintService.getMaintListByType(type);
         list = new ArrayList<HashMap<String, String>>();
         if(dbList.size() > 0) {
             for(MaintenanceInterface maint : dbList) {

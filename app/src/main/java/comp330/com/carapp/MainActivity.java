@@ -134,18 +134,23 @@ public class MainActivity extends AppCompatActivity
         switch(id) {
             case R.id.nav_dashboard:
                 fragmentClass = DashboardFragment.class;
+                setTitle("WheelWell");
                 break;
             case R.id.nav_vehicleinfo:
                 fragmentClass = VehicleInfoFragment.class;
+                setTitle("Vehicle Info");
                 break;
             case R.id.nav_mileagelog:
                 fragmentClass = MileageLogFragment.class;
+                setTitle("Mileage Log");
                 break;
             case R.id.nav_maintenancelog:
                 fragmentClass = MaintenanceLogFragment.class;
+                setTitle("Maintenance Log");
                 break;
             case R.id.nav_reminders:
                 fragmentClass = RemindersFragment.class;
+                setTitle("Reminders");
                 break;
             case R.id.nav_github:
                 Uri url = Uri.parse("https://github.com/TAP1994/CarApp");
@@ -168,22 +173,6 @@ public class MainActivity extends AppCompatActivity
         transaction.addToBackStack(null);
         transaction.commit();
 
-
-        /*if (id == R.id.nav_dashboard) {
-            fragment = DashboardFragment.;
-            // Handle the camera action
-        } else if (id == R.id.nav_vehicleinfo) {
-            fragmentClass = VehicleInfoFragment.class;
-        } else if (id == R.id.nav_mileagelog) {
-            fragmentClass = MileageLogFragment.class;
-        } else if (id == R.id.nav_maintenancelog) {
-            fragmentClass = MaintenanceLogFragment.class;
-        } else if (id == R.id.nav_reminders) {
-            fragmentClass = RemindersFragment.class;
-        } *//*else if (id == R.id.nav_share) {
-
-        }*//*
-        fragment = (Fragment) fragmentClass.newInstance();*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
