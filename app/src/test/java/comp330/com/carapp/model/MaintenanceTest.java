@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  */
 
 public class MaintenanceTest {
-    protected Maintenance m;
+    protected MaintenanceInterface m;
     @Before
     public void setUp() { m = new Maintenance(); }
 
@@ -28,22 +28,20 @@ public class MaintenanceTest {
     public void testType() {
         m.setType("Tires");
         assertEquals(m.getType(), "Tires");
-        assertFalse(m.getType() == "Oil Change");
-
+        assertFalse(m.getType().equals("Oil Change"));
     }
 
     @Test
     public void testValue() {
-        m.set("Tires Rotated");
+        m.setValue("Tires Rotated");
         assertEquals(m.getValue(), "Tires Rotated");
-        assertFalse(m.getValue() == "Standard Oil");
+        assertFalse(m.getValue().equals("Standard Oil"));
     }
 
     @Test
     public void testDetail() {
-        m.set("Tires Swapped (Front and Back)");
-        assertEquals(m.getValue(), "Tires Swapped (Front and Back)");
-        assertFalse(m.getValue() == "Brakes Check");
-
+        m.setDetails("Tires Swapped (Front and Back)");
+        assertEquals(m.getDetails(), "Tires Swapped (Front and Back)");
+        assertFalse(m.getDetails().equals("Brakes Check"));
     }
 }

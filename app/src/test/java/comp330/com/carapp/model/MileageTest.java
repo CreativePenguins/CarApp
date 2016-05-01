@@ -16,18 +16,22 @@ import static org.junit.Assert.assertTrue;
  */
 
 public class MileageTest {
-    protected Mileage m;
+    protected MileageInterface m;
     @Before
-    public void setUp() { m = new Mileage(); }
+    public void setUp() {
+        m = new Mileage();
+    }
 
     @After
-    public void tearDown() { m = null; }
+    public void tearDown() {
+        m = null;
+    }
 
     @Test
     public void testDate() {
         m.setDate("02/3/2016");
         assertEquals(m.getDate(), "02/3/2016");
-        assertFalse(m.getDate() == "01/01/2014");
+        assertFalse(m.getDate().equals("01/01/2014"));
     }
 
     @Test
