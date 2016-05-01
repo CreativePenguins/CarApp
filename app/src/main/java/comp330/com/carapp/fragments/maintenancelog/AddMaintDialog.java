@@ -117,7 +117,7 @@ public class AddMaintDialog extends DialogFragment {
         return v;
     }
     public static class MaintTypeFragment extends DialogFragment {
-        String[] mainttypes = {"Oil Change", "Brakes", "Tire Rotation", "Air Filter"};
+        String[] mainttypes = {"Oil Change", "Brakes", "Tires", "Air Filter"};
         int selectedItem = 0;
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
