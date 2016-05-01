@@ -26,19 +26,24 @@ public class MaintenanceTest {
 
     @Test
     public void testType() {
-        m.setType("Oil Change");
-        assertEquals(m.getType(), "Oil Change");
-        assertFalse(m.getType() == "Inspection");
+        m.setType("Tires");
+        assertEquals(m.getType(), "Tires");
+        assertFalse(m.getType() == "Oil Change");
 
     }
 
     @Test
     public void testValue() {
-
+        m.set("Tires Rotated");
+        assertEquals(m.getValue(), "Tires Rotated");
+        assertFalse(m.getValue() == "Standard Oil");
     }
 
     @Test
     public void testDetail() {
+        m.set("Tires Swapped (Front and Back)");
+        assertEquals(m.getValue(), "Tires Swapped (Front and Back)");
+        assertFalse(m.getValue() == "Brakes Check");
 
     }
 }
