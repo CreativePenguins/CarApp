@@ -25,6 +25,12 @@ public class MaintListViewAdapter extends BaseAdapter {
     public ArrayList<HashMap<String,String>> list;
     Activity activity;
 
+    public MaintListViewAdapter(Activity activity, ArrayList<HashMap<String,String>> list) {
+        super();
+        this.activity = activity;
+        this.list = list;
+    }
+
     @Override
     public int getCount() {
         return list.size();
@@ -56,10 +62,11 @@ public class MaintListViewAdapter extends BaseAdapter {
         if (convertView == null)
         {
             //TODO change to maintenance row
-            convertView = inflater.inflate(R.layout.mileage_row, null);
+            convertView = inflater.inflate(R.layout.maint_row, null);
             holder = new ViewHolder();
-            holder.txtFirst = (TextView) convertView.findViewById(R.id.date);
-            holder.txtSecond = (TextView) convertView.findViewById(R.id.mileage);
+            //holder.txtFirst = (TextView) convertView.findViewById(R.id.maint_date);
+            holder.txtFirst = (TextView) convertView.findViewById(R.id.maint_type);
+            holder.txtSecond = (TextView) convertView.findViewById(R.id.maint_mileage);
             convertView.setTag(holder);
         }
         else
@@ -68,10 +75,10 @@ public class MaintListViewAdapter extends BaseAdapter {
         }
 
         HashMap<String, String> map = list.get(position);
-        holder.txtFirst.setText(map.get(DATE_COLUMN));
-        holder.txtSecond.setText(map.get(TYPE_COLUMN));
-        holder.txtThird.setText(map.get(MILEAGE_COLUMN));
-        holder.txtFourth.setText(map.get(DETAILS_COLUMN));
+        //holder.txtFirst.setText(map.get(DATE_COLUMN));
+        holder.txtFirst.setText(map.get(TYPE_COLUMN));
+        holder.txtSecond.setText(map.get(MILEAGE_COLUMN));
+        //holder.txtFourth.setText(map.get(DETAILS_COLUMN));
 
 
         return convertView;

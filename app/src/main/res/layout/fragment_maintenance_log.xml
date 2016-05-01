@@ -1,11 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="comp330.com.carapp.fragments.maintenancelog.MaintenanceLogFragment">
+    tools:context="comp330.com.carapp.fragments.maintenancelog.MaintenanceLogFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2" >
 
-    <android.support.v7.widget.CardView
+        <TextView android:id="@+id/date_column_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/date_list_header"/>
+
+        <TextView android:id="@+id/mileage_column_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/mileage_list_header"/>
+    </LinearLayout>
+    <!--android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -13,8 +31,11 @@
         card_view:cardCornerRadius="4dp">
         <TextView android:layout_width="match_parent" android:layout_height="match_parent"
             android:text="Maintenance Log" />
-    </android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView-->
+    <ListView android:id="@+id/maintList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ListView>
 
-
-</FrameLayout>
+</LinearLayout>
     <!--android:layout_gravity="center"-->

@@ -7,8 +7,15 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import comp330.com.carapp.R;
+import comp330.com.carapp.model.MaintenanceInterface;
+import comp330.com.carapp.service.MaintService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,8 +32,11 @@ public class MaintenanceLogFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ArrayList<HashMap<String, String>> list;
+    public static final String DATE_COLUMN = "Date Column";
+    public static final String MILEAGE_COLUMN = "Mileage Column";
+    public static final String TYPE_COLUMN = "Type Column";
+    private MaintService maintService;
 
     private OnFragmentInteractionListener mListener;
 
@@ -55,17 +65,21 @@ public class MaintenanceLogFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        maintService = new MaintService(getActivity());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        maintService = new MaintService(getActivity());
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_maintenance_log, container, false);
+        View view = inflater.inflate(R.layout.fragment_maintenance_log, container, false);
+        ListView lview = (ListView) view.findViewById(R.id.maintList);
+        //generateMaintList(1);
+        populateSampleList();
+        MaintListViewAdapter adapter = new MaintListViewAdapter(getActivity(), list);
+        lview.setAdapter(adapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,6 +119,40 @@ public class MaintenanceLogFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    private void populateSampleList() {
+
+        list = new ArrayList<HashMap<String, String>>();
+
+        //get values from database here
+        HashMap<String, String> temp1 = new HashMap<String, String>();
+        temp1.put(TYPE_COLUMN,"Oil Change");
+        temp1.put(MILEAGE_COLUMN, "12,000 miles");
+        list.add(temp1);
+
+        HashMap<String, String> temp2 = new HashMap<String, String>();
+        temp2.put(TYPE_COLUMN,"Brakes");
+        temp2.put(MILEAGE_COLUMN, "12,500 miles");
+        list.add(temp2);
+
+        HashMap<String, String> temp3 = new HashMap<String, String>();
+        temp3.put(TYPE_COLUMN,"Oil Change");
+        temp3.put(MILEAGE_COLUMN, "15,000 miles");
+        list.add(temp3);
+    }
+    private void generateMaintList(int vehicleID) {
+        ArrayList<MaintenanceInterface> dbList = maintService.getMaintList(vehicleID);
+        list = new ArrayList<HashMap<String, String>>();
+        if(dbList.size() > 0) {
+            for(MaintenanceInterface maint : dbList) {
+                HashMap<String, String> temp = new HashMap<String, String>();
+                //temp.put(DATE_COLUMN, maint.get());
+                temp.put(TYPE_COLUMN, maint.getType());
+                temp.put(MILEAGE_COLUMN, Integer.valueOf(maint.getMileage().getMileage()).toString());
+                list.add(temp);
+            }
+        }
     }
 
 }

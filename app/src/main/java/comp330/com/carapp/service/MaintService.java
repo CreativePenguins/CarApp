@@ -22,9 +22,9 @@ public class MaintService {
      * @param type
      * @return a maintenance interface.
      */
-    public MaintenanceInterface getMaintList(int type) {
+    public ArrayList<MaintenanceInterface> getMaintList(int type) {
         try {
-            return maintDAO.getMaint(type);
+            return maintDAO.getMaintList(type);
         } catch (Exception e) {
             System.err.println("MaintServ: Threw an exception retrieving mileage list.");
             System.err.println(e.getMessage());
