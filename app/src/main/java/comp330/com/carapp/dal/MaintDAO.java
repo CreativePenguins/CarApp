@@ -37,7 +37,7 @@ public class MaintDAO {
     public void addMaint(MaintenanceInterface newMaint) {
         try {
             ContentValues values = new ContentValues();
-            //values.put(MAINT_MILE_ID, newMaint.getMileage());
+            values.put(MAINT_MILE_ID, newMaint.getMileage().getMileage());
             values.put(MAINT_TYPE, newMaint.getType());
             values.put(MAINT_VALUE, newMaint.getValue());
             values.put(MAINT_DETAILS, newMaint.getDetails());
@@ -50,7 +50,7 @@ public class MaintDAO {
     }
     public ArrayList<MaintenanceInterface> getMaintList(int vehicleID) {
         ArrayList<MaintenanceInterface> list = new ArrayList<>();
-        MaintenanceInterface maint = new Maintenance();
+
         String selectMaintQuery = "SELECT * FROM Maintenance";
 
         try {
@@ -61,6 +61,7 @@ public class MaintDAO {
                 // looping through all rows and adding to list
                 if (cursor.moveToFirst()) {
                     do {
+                        MaintenanceInterface maint = new Maintenance();
                         MileageInterface mileage = new Mileage();
                         mileage.setMileage(cursor.getInt(1));
                         maint.setDetails(cursor.getString(4));

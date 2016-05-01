@@ -75,8 +75,8 @@ public class MaintenanceLogFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_maintenance_log, container, false);
         ListView lview = (ListView) view.findViewById(R.id.maintList);
-        //generateMaintList(1);
-        populateSampleList();
+        generateMaintList(1);
+        //populateSampleList();
         MaintListViewAdapter adapter = new MaintListViewAdapter(getActivity(), list);
         lview.setAdapter(adapter);
         return view;
