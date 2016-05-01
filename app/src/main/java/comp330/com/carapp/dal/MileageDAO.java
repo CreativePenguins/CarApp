@@ -85,4 +85,46 @@ public class MileageDAO {
 
     }
 
+    /**
+     * Gets the maximum (current) mileage for a specific vehicle
+     * @param vehicleID selected vehicle to get the current mileage for
+     * @return a Mileage object representing the current mileage
+     */
+    public MileageInterface getCurrentMileage(int vehicleID) {
+        MileageInterface currentMileage = new Mileage();
+
+        String selectMileageQuery = "SELECT * FROM Mileage WHERE vehicle_id = " +
+                vehicleID + " ORDER BY mileage DESC LIMIT 1";
+
+        try {
+
+            Cursor cursor = database.rawQuery(selectMileageQuery, null);
+            try {
+
+                if (cursor.moveToFirst()) {
+                    do {
+                        currentMileage.setVehicleID(cursor.getInt(1));
+                        currentMileage.setDate(cursor.getString(2));
+                        currentMileage.setMileage(cursor.getInt(3));
+
+                    } while (cursor.moveToNext());
+                }
+
+            } finally {
+                try { cursor.close(); } catch (Exception se) {
+                    System.err.println("MileageDAO: Threw an exception getting current mileage.");
+                    System.err.println(se.getMessage());
+                }
+            }
+
+        } finally {
+            try { database.close(); } catch (Exception se) {
+                System.err.println("MileageDAO: Threw an exception getting current mileage.");
+                System.err.println(se.getMessage());
+            }
+        }
+
+        return currentMileage;
+    }
+
 }
