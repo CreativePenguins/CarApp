@@ -2,10 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id = "@+id/dashboard"
-    tools:context="comp330.com.carapp.fragments.dashboard.DashboardFragment"
-    >
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context="comp330.com.carapp.fragments.dashboard.DashboardFragment" >
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
