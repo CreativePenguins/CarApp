@@ -124,7 +124,7 @@ public class MaintDAO {
     public ArrayList<MaintenanceInterface> getMaintList(int vehicleID) {
         ArrayList<MaintenanceInterface> list = new ArrayList<>();
 
-        String selectMaintQuery = "SELECT * FROM Maintenance WHERE vehicle_id = " + vehicleID;
+        String selectMaintQuery = "SELECT * FROM Maintenance WHERE vehicle_id = " + vehicleID + " ORDER BY mileage ASC";
 
         try {
             Cursor cursor = database.rawQuery(selectMaintQuery, null);
