@@ -70,7 +70,9 @@ public class MileageListViewAdapter extends BaseAdapter {
         }
 
         HashMap<String, String> map = list.get(position);
-        holder.txtFirst.setText(map.get(DATE_COLUMN));
+        String predate = map.get(DATE_COLUMN);
+        String date = predate.substring(4,6) + "/" + predate.substring(6,8) + "/" + predate.substring(0,4);
+        holder.txtFirst.setText(date);
         holder.txtSecond.setText(map.get(MILEAGE_COLUMN));
 
 
