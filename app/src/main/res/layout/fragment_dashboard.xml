@@ -79,6 +79,7 @@
                 custom:arc_finished_color="@color/colorPrimary"
                 custom:arc_unfinished_color="@color/gray"
                 custom:arc_text_size="70dp"
+                custom:arc_text_color="@color/colorPrimary"
                 custom:arc_suffix_text_size="30dp"
                 custom:arc_bottom_text_size="20dp"
                 custom:arc_bottom_text="OIL CHANGE"

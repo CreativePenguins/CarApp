@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
                 } else if ( f instanceof MaintenanceLogFragment) {
                     showAddMaintDialog(1);
                 } else {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "TODO!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
 
