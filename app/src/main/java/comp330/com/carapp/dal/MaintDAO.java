@@ -13,7 +13,7 @@ import comp330.com.carapp.model.Mileage;
 import comp330.com.carapp.model.MileageInterface;
 
 /**
- * Created by Tyler on 4/10/16.
+ * Maintenance data access object
  */
 public class MaintDAO {
 
@@ -36,6 +36,10 @@ public class MaintDAO {
         database = mDBHelper.getWritableDatabase();
     }
 
+    /**
+     * Add a maintenance object to the maintenance and mileage tables.
+     * @param newMaint new maintenance to be added
+     */
     public void addMaint(MaintenanceInterface newMaint) {
         //adds to the maintenance table
         try {
@@ -67,6 +71,11 @@ public class MaintDAO {
         }
     }
 
+    /**
+     * Gets a list of maintenance objects of a particular type
+     * @param type of maintenance to filter by
+     * @return array list of maintenance objects
+     */
     public ArrayList<MaintenanceInterface> getMaintListByType(String type) {
         ArrayList<MaintenanceInterface> list = new ArrayList<>();
 
@@ -105,18 +114,29 @@ public class MaintDAO {
         return list;
     }
 
+    /**
+     * Gets a maintenance object based on the maintenance ID
+     * Not used anywhere, can be modified as needed
+     * @param maintID
+     * @return
+     */
     public MaintenanceInterface getMaint(int maintID) {
         MaintenanceInterface maint = new Maintenance();
+        MileageInterface mileage = new Mileage();
         String selectMaintQuery = "SELECT * FROM Maintenance WHERE maintenance_id = " + maintID;
+
         try {
             Cursor cursor = database.rawQuery(selectMaintQuery, null);
             try {
                 if (cursor.moveToFirst()) {
                     do {
-                        maint.setDetails(cursor.getString(4));
-                        //maint.setMileage(cursor.getString(1));
-                        maint.setType(cursor.getString(2));
-                        maint.setValue(cursor.getString(3));
+                        mileage.setVehicleID(cursor.getInt(1));
+                        mileage.setDate(cursor.getString(2));
+                        mileage.setMileage(cursor.getInt(3));
+                        maint.setMileage(mileage);
+                        maint.setType(cursor.getString(4));
+                        maint.setValue(cursor.getString(5));
+                        maint.setDetails(cursor.getString(6));
                     } while (cursor.moveToNext());
                 }
                 return maint;
