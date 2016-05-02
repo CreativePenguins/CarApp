@@ -36,7 +36,7 @@ public class AddMaintDialog extends DialogFragment {
     private int vehicleID;
     private MaintService maintService;
     private static EditText selectedmaintDate;
-    private static TextView selectmaintType;
+    private static EditText selectmaintType;
     private static EditText selectedmaintMileage;
 
     /**
@@ -70,7 +70,7 @@ public class AddMaintDialog extends DialogFragment {
         maintService = new MaintService(getActivity());
         selectedmaintDate = (EditText) v.findViewById(R.id.insertMaintDate);
         selectedmaintMileage = (EditText) v.findViewById(R.id.insertMaintMileage);
-        selectmaintType = (TextView) v.findViewById(R.id.insertMaintType);
+        selectmaintType = (EditText) v.findViewById(R.id.insertMaintType);
 
         // Watch for button clicks.
         Button addButton = (Button)v.findViewById(R.id.addButton);
