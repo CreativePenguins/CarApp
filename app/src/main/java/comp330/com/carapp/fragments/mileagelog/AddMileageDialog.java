@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,7 @@ import comp330.com.carapp.model.MileageInterface;
 import comp330.com.carapp.service.MileageService;
 
 /**
- * Created by Chrissy on 4/18/2016.
+ * Dialog to add mileage that opens when clicking the plus button when in the Mileage Log
  */
 public class AddMileageDialog extends DialogFragment {
 
@@ -47,7 +46,11 @@ public class AddMileageDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vehicleID = getArguments().getInt("vehicleID");
+        if (getArguments() != null) {
+            vehicleID = getArguments().getInt("vehicleID");
+        } else {
+            vehicleID = 1;
+        }
         mileageService = new MileageService(getActivity());
     }
 

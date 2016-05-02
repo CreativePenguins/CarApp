@@ -10,14 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import comp330.com.carapp.R;
-import comp330.com.carapp.model.Maintenance;
 import comp330.com.carapp.model.MaintenanceInterface;
 import comp330.com.carapp.service.MaintService;
 
@@ -30,35 +27,26 @@ import comp330.com.carapp.service.MaintService;
  * create an instance of this fragment.
  */
 public class MaintenanceLogFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private ArrayList<MaintenanceInterface> list;
     private ArrayList<CardView> cardList;
-    public static final String DATE_COLUMN = "Date Column";
-    public static final String MILEAGE_COLUMN = "Mileage Column";
-    public static final String TYPE_COLUMN = "Type Column";
     private MaintService maintService;
+    private int vehicleID;
 
     private OnFragmentInteractionListener mListener;
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Create a new instance of the MaintenanceLogFragment
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param vehicleID
      * @return A new instance of fragment MaintenanceLogFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static MaintenanceLogFragment newInstance(String param1, String param2) {
+    public static MaintenanceLogFragment newInstance(int vehicleID) {
         MaintenanceLogFragment fragment = new MaintenanceLogFragment();
+
+        // Supply vehicleID input as an argument.
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt("vehicleID", vehicleID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,6 +58,11 @@ public class MaintenanceLogFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            vehicleID = getArguments().getInt("vehicleID");
+        } else {
+            vehicleID = 1;
+        }
         maintService = new MaintService(getActivity());
     }
 
@@ -149,23 +142,10 @@ public class MaintenanceLogFragment extends Fragment {
         temp3.put(MILEAGE_COLUMN, "15,000 miles");
         list.add(temp3);
     }*/
-    /*private ArrayList<MaintenanceInterface> generateMaintList(String type) {
-        ArrayList<MaintenanceInterface> dbList = maintService.getMaintListByType(type);
-        list = new ArrayList<HashMap<String, String>>();
-        if(dbList.size() > 0) {
-            for(MaintenanceInterface maint : dbList) {
-                HashMap<String, String> temp = new HashMap<String, String>();
-                //temp.put(DATE_COLUMN, maint.get());
-                temp.put(TYPE_COLUMN, maint.getType());
-                temp.put(MILEAGE_COLUMN, Integer.valueOf(maint.getMileage().getMileage()).toString());
-                list.add(temp);
-            }
-        }
-        return dbList;
-    }*/
+
 
     private void generateMaintList() {
-        ArrayList<MaintenanceInterface> dbList = maintService.getMaintListByType("type");
+        ArrayList<MaintenanceInterface> dbList = maintService.getMaintList(vehicleID);
         HashMap<String, ArrayList<MaintenanceInterface>> recMap = new HashMap<String, ArrayList<MaintenanceInterface>>();
         list = new ArrayList<MaintenanceInterface>();
         //ArrayList<MaintenanceInterface> cList = new ArrayList<MaintenanceInterface>();

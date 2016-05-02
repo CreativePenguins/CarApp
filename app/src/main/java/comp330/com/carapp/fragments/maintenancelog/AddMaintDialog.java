@@ -1,21 +1,17 @@
 package comp330.com.carapp.fragments.maintenancelog;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -27,10 +23,8 @@ import comp330.com.carapp.model.MileageInterface;
 import comp330.com.carapp.service.MaintService;
 
 /**
- * A dialog fragment that allows user to add maintenance in the maintenance log
- * section.
- *
- * Created by aksharkumar 04/27/16
+ * Dialog to add maintenance that opens when clicking the
+ * plus button when in the Maintenance Log
  */
 public class AddMaintDialog extends DialogFragment {
     private int vehicleID;
@@ -46,7 +40,7 @@ public class AddMaintDialog extends DialogFragment {
     public static AddMaintDialog newInstance(int vehicleID) {
         AddMaintDialog f = new AddMaintDialog();
 
-        // Supply num input as an argument.
+        // Supply vehicleID input as an argument.
         Bundle args = new Bundle();
         args.putInt("vehicleID", vehicleID);
         f.setArguments(args);
@@ -57,7 +51,11 @@ public class AddMaintDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vehicleID = getArguments().getInt("vehicleID");
+        if (getArguments() != null) {
+            vehicleID = getArguments().getInt("vehicleID");
+        } else {
+            vehicleID = 1;
+        }
         maintService = new MaintService(getActivity());
     }
 
@@ -79,12 +77,12 @@ public class AddMaintDialog extends DialogFragment {
                 String date = selectedmaintDate.getText().toString();
                 String type = selectmaintType.getText().toString();
                 MileageInterface mileage = new Mileage();
-                mileage.setMileage(Integer.parseInt(selectedmaintMileage.getText().toString()));
                 MaintenanceInterface newMaintenance = new Maintenance();
-                //newMaintenance.setVehicleID(vehicleID);
-                newMaintenance.setType(type);
+                mileage.setMileage(Integer.parseInt(selectedmaintMileage.getText().toString()));
+                mileage.setDate(date);
+                mileage.setVehicleID(vehicleID);
                 newMaintenance.setMileage(mileage);
-                newMaintenance.getMileage().setDate(date);
+                newMaintenance.setType(type);
                 maintService.addMaint(newMaintenance);
                 getDialog().dismiss();
             }

@@ -72,14 +72,16 @@ public class MaintDAO {
     }
 
     /**
-     * Gets a list of maintenance objects of a particular type
+     * Gets a list of maintenance objects of a particular type for a particular vehicle
+     * @param vehicleID vehicle to filter by
      * @param type of maintenance to filter by
      * @return array list of maintenance objects
      */
-    public ArrayList<MaintenanceInterface> getMaintListByType(String type) {
+    public ArrayList<MaintenanceInterface> getMaintListByType(int vehicleID, String type) {
         ArrayList<MaintenanceInterface> list = new ArrayList<>();
 
-        String selectMaintQuery = "SELECT * FROM Maintenance WHERE type = '" + type + "' ORDER BY mileage ASC";
+        String selectMaintQuery = "SELECT * FROM Maintenance WHERE type = '" + type +
+                "' AND vehicle_id = " + vehicleID + " ORDER BY mileage ASC";
 
         try {
 
@@ -115,15 +117,14 @@ public class MaintDAO {
     }
 
     /**
-     * Gets a maintenance object based on the maintenance ID
-     * Not used anywhere, can be modified as needed
-     * @param maintID
-     * @return
+     * Gets all of the maintenance for a particular vehicle
+     * @param vehicleID vehicle to filter by
+     * @return ArrayList of maintenance performed on a specific vehicle
      */
-    public ArrayList<MaintenanceInterface> getMaint() {
+    public ArrayList<MaintenanceInterface> getMaintList(int vehicleID) {
         ArrayList<MaintenanceInterface> list = new ArrayList<>();
 
-        String selectMaintQuery = "SELECT * FROM Maintenance" /*WHERE maintenance_id = " + maintID*/;
+        String selectMaintQuery = "SELECT * FROM Maintenance WHERE vehicle_id = " + vehicleID;
 
         try {
             Cursor cursor = database.rawQuery(selectMaintQuery, null);

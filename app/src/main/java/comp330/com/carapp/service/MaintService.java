@@ -18,18 +18,33 @@ public class MaintService {
 
 
     /**
-     * Gets a list of maintenance objects of a particular type.
+     * Gets a list of maintenance objects of a particular type for a particular vehicle.
      * @param type of maintenance to filter by
      * @return a maintenance interface.
      */
-    public ArrayList<MaintenanceInterface> getMaintListByType(String type) {
+    public ArrayList<MaintenanceInterface> getMaintListByType(int vehicleID, String type) {
         try {
-            return maintDAO.getMaint();
-            //return maintDAO.getMaintListByType(type);
+            return maintDAO.getMaintListByType(vehicleID, type);
         } catch (Exception e) {
             System.err.println("MaintService: Threw an exception retrieving maintenance list by type.");
             System.err.println(e.getMessage());
-        } return null;
+        }
+        return null;
+    }
+
+    /**
+     * Gets all of the maintenance for a particular vehicle
+     * @param vehicleID vehicle to filter by
+     * @return ArrayList of maintenance performed on a specific vehicle
+     */
+    public ArrayList<MaintenanceInterface> getMaintList(int vehicleID) {
+        try {
+            return maintDAO.getMaintList(vehicleID);
+        } catch (Exception e) {
+            System.err.println("MaintService: Threw an exception retrieving maintenance list by type.");
+            System.err.println(e.getMessage());
+        }
+        return null;
     }
 
     /**

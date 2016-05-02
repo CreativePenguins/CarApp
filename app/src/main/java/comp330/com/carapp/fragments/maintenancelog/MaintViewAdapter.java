@@ -12,8 +12,9 @@ import comp330.com.carapp.R;
 import comp330.com.carapp.model.MaintenanceInterface;
 
 /**
- * Created by aksharkumar on 5/1/16.
+ * Maintenance View Adapter for the maintenance cards.
  */
+
 public class MaintViewAdapter extends RecyclerView.Adapter<MaintViewAdapter.MaintViewHolder> {
     private ArrayList<MaintenanceInterface> maintList;
     public MaintViewAdapter(ArrayList<MaintenanceInterface> maintList) {
