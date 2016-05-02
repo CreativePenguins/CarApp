@@ -4,9 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.Settings;
-
-import org.apache.http.client.UserTokenHandler;
 
 import java.util.ArrayList;
 
@@ -14,7 +11,7 @@ import comp330.com.carapp.model.User;
 import comp330.com.carapp.model.UserInterface;
 
 /**
- * Created by Tyler on 4/10/16.
+ * User data access object
  */
 public class UserDAO {
 
@@ -36,6 +33,10 @@ public class UserDAO {
         database = mDBHelper.getWritableDatabase();
     }
 
+    /**
+     * Adds a new user to the user table.
+     * @param newUser user to be added
+     */
     public void addUser(UserInterface newUser) {
 
         try {
@@ -55,6 +56,11 @@ public class UserDAO {
         }
     }
 
+    /**
+     * Gets a user by the user ID.
+     * @param userID ID to look up in user table
+     * @return user object
+     */
     public UserInterface getUser(int userID) {
 
         UserInterface user = new User();

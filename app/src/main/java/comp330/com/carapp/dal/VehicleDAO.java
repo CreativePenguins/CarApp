@@ -35,6 +35,10 @@ public class VehicleDAO {
         database = mDbHelper.getWritableDatabase();
     }
 
+    /**
+     * Adds a vehicle to the VehicleData table
+     * @param newVehicle to be added
+     */
     public void addVehicle(VehicleInterface newVehicle) {
 
         try {
@@ -55,6 +59,11 @@ public class VehicleDAO {
 
     }
 
+    /**
+     * Gets a vehicle by the vehicleID.
+     * @param vehicleID ID to find in the VehicleData table
+     * @return Vehicle object
+     */
     public VehicleInterface getVehicle(int vehicleID) {
 
         VehicleInterface vehicle = new Vehicle();

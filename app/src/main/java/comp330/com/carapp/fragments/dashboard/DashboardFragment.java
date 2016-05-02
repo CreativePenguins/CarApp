@@ -148,7 +148,6 @@ public class DashboardFragment extends Fragment {
         // always rounds down to make sure it's never rounded up to 100%
         int progress = (int) Math.floor((currentMileage - lastOCMileage) / 30);
         arcProgress.setProgress(progress);
-
     }
 
 }

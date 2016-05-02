@@ -1,115 +1,169 @@
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="comp330.com.carapp.fragments.vehicleinfo.VehicleInfoFragment">
 
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|top">
+        android:layout_gravity="center_horizontal|top"
+        android:layout_below="@+id/space"
+        android:orientation="horizontal"
+        android:weightSum="4">
 
-        <TableLayout
+        <!-- 1st column -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Vehicle Name: "
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Make: "
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Model: "
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Year: "
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Color: "
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="License Plate: "
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <!-- blank middle column -->
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <!-- 2nd column -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true">
+            android:orientation="vertical"
+            android:gravity="center_vertical">
 
-            <TableRow
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/vehicle_name"/>
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="20dp"/>
 
-            </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/vehicle_make"/>
 
-            <TableRow
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="20dp"/>
 
-            </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/vehicle_model"/>
 
-            <TableRow
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="20dp"/>
 
-            </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/vehicle_year"/>
 
-            <TableRow
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="20dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Make"
-                    android:id="@+id/textView2"
-                    android:layout_column="0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/vehicle_color"/>
 
-                <EditText
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText"
-                    android:layout_column="5" />
-            </TableRow>
-
-            <TableRow
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="20dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Model"
-                    android:id="@+id/textView3"
-                    android:layout_column="0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/vehicle_licenseplate"/>
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText2"
-                    android:layout_column="5" />
-            </TableRow>
+        </LinearLayout>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Year"
-                    android:id="@+id/textView4"
-                    android:layout_column="0" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText3"
-                    android:layout_column="5" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="VIN"
-                    android:id="@+id/textView5"
-                    android:layout_column="0" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText4"
-                    android:layout_column="5" />
-            </TableRow>
-        </TableLayout>
-    </RelativeLayout>
-</FrameLayout>
+    </LinearLayout>
+</RelativeLayout>
