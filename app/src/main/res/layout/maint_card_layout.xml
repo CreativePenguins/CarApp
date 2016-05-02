@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="100dp"
     card_view:cardCornerRadius="4dp"
     android:layout_margin="5dp">
 
@@ -15,10 +15,11 @@
         <TextView
             android:id="@+id/maintTitle"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="50dp"
             android:text="Maint Type"
             android:gravity="center_vertical"
-            android:textSize="14dp"/>
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/txtDate"
@@ -26,18 +27,18 @@
             android:layout_height="wrap_content"
             android:text="Date"
             android:gravity="center_vertical"
-            android:textSize="10dp"
+            android:textSize="14dp"
             android:layout_below="@id/maintTitle"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/txtMileage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mileage"
-            android:textSize="10dp"
-            android:layout_marginTop="10dp"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="150dp"
             android:layout_alignBaseline="@id/txtDate"/>
