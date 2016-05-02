@@ -28,7 +28,8 @@
         android:ems="10"
         android:id="@+id/insertMaintType"
         android:hint="Select maintenance type"
-        android:layout_below="@id/insertMaintMileage"/>
+        android:layout_below="@id/insertMaintMileage"
+        android:focusable="false"/>
 
     <Button
         android:layout_width="wrap_content"
