@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import comp330.com.carapp.R;
+import comp330.com.carapp.model.Maintenance;
 import comp330.com.carapp.model.MaintenanceInterface;
 import comp330.com.carapp.service.MaintService;
 
@@ -33,6 +35,7 @@ public class MaintenanceLogFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private ArrayList<HashMap<String, String>> list;
+    private ArrayList<CardView> cardList;
     public static final String DATE_COLUMN = "Date Column";
     public static final String MILEAGE_COLUMN = "Mileage Column";
     public static final String TYPE_COLUMN = "Type Column";
@@ -141,7 +144,7 @@ public class MaintenanceLogFragment extends Fragment {
         temp3.put(MILEAGE_COLUMN, "15,000 miles");
         list.add(temp3);
     }
-    private void generateMaintList(String type) {
+    private ArrayList<MaintenanceInterface> generateMaintList(String type) {
         ArrayList<MaintenanceInterface> dbList = maintService.getMaintListByType(type);
         list = new ArrayList<HashMap<String, String>>();
         if(dbList.size() > 0) {
@@ -153,6 +156,18 @@ public class MaintenanceLogFragment extends Fragment {
                 list.add(temp);
             }
         }
+        return dbList;
+    }
+
+    private ArrayList<CardView> generateCardList() {
+        ArrayList<MaintenanceInterface> dblist = new ArrayList<MaintenanceInterface>();
+        ArrayList<CardView> cl = new ArrayList<CardView>();
+        String[] types = {"Oil Change", "Brakes", "Tires", "Air Filter"};
+        for(String s : types) {
+            dblist = maintService.getMaintListByType(s);
+
+        }
+        return cl;
     }
 
 }

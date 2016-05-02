@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/maintTitle"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="Maint Type"
@@ -22,18 +22,18 @@
             android:textSize="14dp"/>
 
         <TextView
-            android:id="@+id/txtName"
+            android:id="@+id/txtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date"
             android:gravity="center_vertical"
             android:textSize="10dp"
-            android:layout_below="@id/title"
+            android:layout_below="@id/maintTitle"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"/>
 
         <TextView
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtMileage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mileage"
@@ -41,7 +41,7 @@
             android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="150dp"
-            android:layout_alignBaseline="@id/txtName"/>
+            android:layout_alignBaseline="@id/txtDate"/>
 
 
     </RelativeLayout>

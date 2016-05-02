@@ -27,6 +27,7 @@ dependencies {
     compile 'junit:junit:4.12'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     compile 'com.android.support:cardview-v7:22.0.+'
+    compile 'com.android.support:recyclerview-v7:22.0.+'
     compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
 }
 
