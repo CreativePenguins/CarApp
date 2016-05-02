@@ -18,7 +18,6 @@
             android:layout_height="20dp"
             android:text="Maint Type"
             android:gravity="center_vertical"
-            android:textColor="@android:color/white"
             android:textSize="14dp"/>
 
         <TextView

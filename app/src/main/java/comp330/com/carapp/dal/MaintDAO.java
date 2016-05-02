@@ -120,16 +120,18 @@ public class MaintDAO {
      * @param maintID
      * @return
      */
-    public MaintenanceInterface getMaint(int maintID) {
-        MaintenanceInterface maint = new Maintenance();
-        MileageInterface mileage = new Mileage();
-        String selectMaintQuery = "SELECT * FROM Maintenance WHERE maintenance_id = " + maintID;
+    public ArrayList<MaintenanceInterface> getMaint() {
+        ArrayList<MaintenanceInterface> list = new ArrayList<>();
+
+        String selectMaintQuery = "SELECT * FROM Maintenance" /*WHERE maintenance_id = " + maintID*/;
 
         try {
             Cursor cursor = database.rawQuery(selectMaintQuery, null);
             try {
                 if (cursor.moveToFirst()) {
                     do {
+                        MaintenanceInterface maint = new Maintenance();
+                        MileageInterface mileage = new Mileage();
                         mileage.setVehicleID(cursor.getInt(1));
                         mileage.setDate(cursor.getString(2));
                         mileage.setMileage(cursor.getInt(3));
@@ -137,9 +139,10 @@ public class MaintDAO {
                         maint.setType(cursor.getString(4));
                         maint.setValue(cursor.getString(5));
                         maint.setDetails(cursor.getString(6));
+                        list.add(maint);
                     } while (cursor.moveToNext());
                 }
-                return maint;
+
             } finally {
                 try {
                     cursor.close();
@@ -156,5 +159,6 @@ public class MaintDAO {
                 System.err.println(e.getMessage());
             }
         }
+        return list;
     }
 }

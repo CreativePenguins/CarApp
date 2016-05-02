@@ -33,7 +33,7 @@ public class MaintViewAdapter extends RecyclerView.Adapter<MaintViewAdapter.Main
         MaintenanceInterface mi = maintList.get(position);
         holder.maintTitle.setText(mi.getType());
         holder.maintDate.setText(mi.getMileage().getDate());
-        holder.maintMileage.setText(mi.getMileage().getMileage());
+        holder.maintMileage.setText(Integer.valueOf(mi.getMileage().getMileage()).toString() + " miles");
     }
 
     @Override

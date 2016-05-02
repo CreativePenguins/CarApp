@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +36,7 @@ public class MaintenanceLogFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private ArrayList<HashMap<String, String>> list;
+    private ArrayList<MaintenanceInterface> list;
     private ArrayList<CardView> cardList;
     public static final String DATE_COLUMN = "Date Column";
     public static final String MILEAGE_COLUMN = "Mileage Column";
@@ -77,11 +79,14 @@ public class MaintenanceLogFragment extends Fragment {
         maintService = new MaintService(getActivity());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_maintenance_log, container, false);
-        ListView lview = (ListView) view.findViewById(R.id.maintList);
-        generateMaintList("Oil Change");
+        RecyclerView rview = (RecyclerView) view.findViewById(R.id.maintList);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rview.setLayoutManager(llm);
+        generateMaintList();
         //populateSampleList();
-        MaintListViewAdapter adapter = new MaintListViewAdapter(getActivity(), list);
-        lview.setAdapter(adapter);
+        MaintViewAdapter adapter = new MaintViewAdapter(list);
+        rview.setAdapter(adapter);
         return view;
     }
 
@@ -124,7 +129,7 @@ public class MaintenanceLogFragment extends Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
-    private void populateSampleList() {
+    /*private void populateSampleList() {
 
         list = new ArrayList<HashMap<String, String>>();
 
@@ -143,8 +148,8 @@ public class MaintenanceLogFragment extends Fragment {
         temp3.put(TYPE_COLUMN,"Oil Change");
         temp3.put(MILEAGE_COLUMN, "15,000 miles");
         list.add(temp3);
-    }
-    private ArrayList<MaintenanceInterface> generateMaintList(String type) {
+    }*/
+    /*private ArrayList<MaintenanceInterface> generateMaintList(String type) {
         ArrayList<MaintenanceInterface> dbList = maintService.getMaintListByType(type);
         list = new ArrayList<HashMap<String, String>>();
         if(dbList.size() > 0) {
@@ -157,17 +162,26 @@ public class MaintenanceLogFragment extends Fragment {
             }
         }
         return dbList;
-    }
+    }*/
 
-    private ArrayList<CardView> generateCardList() {
-        ArrayList<MaintenanceInterface> dblist = new ArrayList<MaintenanceInterface>();
-        ArrayList<CardView> cl = new ArrayList<CardView>();
-        String[] types = {"Oil Change", "Brakes", "Tires", "Air Filter"};
+    private void generateMaintList() {
+        ArrayList<MaintenanceInterface> dbList = maintService.getMaintListByType("type");
+        HashMap<String, ArrayList<MaintenanceInterface>> recMap = new HashMap<String, ArrayList<MaintenanceInterface>>();
+        list = new ArrayList<MaintenanceInterface>();
+        //ArrayList<MaintenanceInterface> cList = new ArrayList<MaintenanceInterface>();
+        String[] types = {"oil change", "brakes", "tires", "air filter"};
         for(String s : types) {
-            dblist = maintService.getMaintListByType(s);
-
+            recMap.put(s, new ArrayList<MaintenanceInterface>());
         }
-        return cl;
+        for(MaintenanceInterface m : dbList) {
+            recMap.get(m.getType()).add(m);
+        }
+        for(String st : types) {
+            if(!recMap.get(st).isEmpty()){
+                list.add(recMap.get(st).get(recMap.get(st).size() - 1));
+            }
+        }
+
     }
 
 }

@@ -82,9 +82,9 @@ public class AddMaintDialog extends DialogFragment {
                 mileage.setMileage(Integer.parseInt(selectedmaintMileage.getText().toString()));
                 MaintenanceInterface newMaintenance = new Maintenance();
                 //newMaintenance.setVehicleID(vehicleID);
-                //newMaintenance.setDate(date);
                 newMaintenance.setType(type);
                 newMaintenance.setMileage(mileage);
+                newMaintenance.getMileage().setDate(date);
                 maintService.addMaint(newMaintenance);
                 getDialog().dismiss();
             }
@@ -118,7 +118,7 @@ public class AddMaintDialog extends DialogFragment {
     }
 
     public static class MaintTypeFragment extends DialogFragment {
-        String[] mainttypes = {"Oil Change", "Brakes", "Tires", "Air Filter"};
+        String[] mainttypes = {"oil change", "brakes", "tires", "air filter"};
         int selectedItem = 0;
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {

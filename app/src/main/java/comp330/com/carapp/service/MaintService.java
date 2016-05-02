@@ -24,7 +24,8 @@ public class MaintService {
      */
     public ArrayList<MaintenanceInterface> getMaintListByType(String type) {
         try {
-            return maintDAO.getMaintListByType(type);
+            return maintDAO.getMaint();
+            //return maintDAO.getMaintListByType(type);
         } catch (Exception e) {
             System.err.println("MaintService: Threw an exception retrieving maintenance list by type.");
             System.err.println(e.getMessage());
