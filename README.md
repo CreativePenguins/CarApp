@@ -1,4 +1,4 @@
-# CarApp
+# WheelWell the CarApp!
 
 Loyola University Chicago
 
