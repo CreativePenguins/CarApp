@@ -18,6 +18,6 @@ public interface VehicleInterface {
     public void setLicensePlate(String licensePlate);
     public void setVIN(String VIN);
     public String getVIN();
-    public void setMileage(int i);
+    public void setMileage(MileageInterface mileage);
     public MileageInterface getMileage();
 }

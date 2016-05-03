@@ -9,7 +9,9 @@ public class VehicleSettings implements VehicleSettingsInterface {
     //need to define methods for setting maintenance to track
     private HashMap<String, Boolean> maintenanceToTrack;
 
-    VehicleSettings() {}
+    VehicleSettings() {
+        initialSetMaintenanceToTrack();
+    }
 
     @Override
     public void setMileageUpdateFreq(int mileageUpdateFreq) {
@@ -23,7 +25,23 @@ public class VehicleSettings implements VehicleSettingsInterface {
 
     @Override
     public void setMaintenanceToTrack(String s) {
-        if(maintenanceToTrack.get(s)) maintenanceToTrack.put(s, false);
-        else maintenanceToTrack.put(s, true);
+        if(maintenanceToTrack.get(s)) {
+            maintenanceToTrack.put(s, false);
+        }
+        else {
+            maintenanceToTrack.put(s, true);
+        }
+    }
+
+    @Override
+    public HashMap<String, Boolean> getMaintenanceToTrack() {
+        return maintenanceToTrack;
+    }
+
+    private void initialSetMaintenanceToTrack() {
+        setMaintenanceToTrack("brakes");
+        setMaintenanceToTrack("oil change");
+        setMaintenanceToTrack("air filter");
+        setMaintenanceToTrack("tires");
     }
 }
