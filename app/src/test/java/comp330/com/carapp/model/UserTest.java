@@ -37,7 +37,7 @@ public class UserTest {
     }
 
     @Test
-    public void testExample() {
+    public void testVehicle() {
         u.setUsername("carUser");
         u.setPassword("1234");
         VehicleInterface v = new Vehicle();
