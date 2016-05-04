@@ -11,9 +11,8 @@ public class User implements UserInterface {
     private String password;
     private String licenseNo;
     private String imageURL;
-    //private String vehicle_id;
+    //vehicles is HashMap that uses the VIN String as a key and the vehicle as a value
     private HashMap<String, VehicleInterface> vehicles = new HashMap<>();
-
 
     @Override
     public void setName(String name) {
@@ -60,16 +59,29 @@ public class User implements UserInterface {
     public String getImageURL() { return imageURL; }
 
     @Override
+    /**
+     * Add a vehicle to the vehicles HashMap with a key of the VIN string
+     * and a value of the vehicle itself.
+     */
     public void addVehicle(VehicleInterface v) {
-        if(!vehicles.containsKey(v.getVIN())) vehicles.put(v.getVIN(), v);
+        if(!vehicles.containsKey(v.getVIN())) {
+            vehicles.put(v.getVIN(), v);
+        }
     }
 
     @Override
-    //this method could introduce potential bugs
-    public VehicleInterface getVehicle(String s) {
-        if(vehicles.containsKey(s)) {
-            return vehicles.get(s);
+    public HashMap<String, VehicleInterface> getVehicles() {
+        return vehicles;
+    }
+
+
+    @Override
+    /**
+     * Remove the vehicle from vehicles if it is in the HashMap of vehicles
+     */
+    public void removeVehicle(VehicleInterface v) {
+        if(vehicles.containsValue(v)) {
+            vehicles.remove(v.getVIN());
         }
-        else return null;
     }
 }

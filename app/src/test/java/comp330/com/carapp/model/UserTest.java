@@ -13,40 +13,67 @@ import static org.junit.Assert.assertTrue;
  */
 public class UserTest {
 
-    protected UserInterface user;
+    protected UserInterface user = null;
+    protected VehicleInterface usersVehicle = null;
+    protected VehicleInterface newVehicle = null;
 
     @Before
     public void setUp() {
         user = new User();
+        usersVehicle = new Vehicle();
+        usersVehicle.setVIN("1HGCM82633A004351");
+        user.addVehicle(usersVehicle);
+
+        //vehicle to be added in test
+        newVehicle = new Vehicle();
     }
 
     @After
     public void tearDown() {
         user = null;
+        usersVehicle = null;
+    }
+
+    @Test
+    public void testName() {
+        user.setName("Akshar");
+        assertEquals("Akshar", user.getName());
     }
 
     @Test
     public void testUsername() {
         user.setUsername("akumar6");
-        assertEquals(user.getUsername(), "akumar6");
+        assertEquals("akumar6", user.getUsername());
     }
 
     @Test
     public void testPassword() {
         user.setPassword("password123");
-        assertEquals(user.getPassword(), "password123");
+        assertEquals("password123", user.getPassword());
     }
 
     @Test
-    public void testVehicle() {
-        user.setUsername("carUser");
-        user.setPassword("1234");
-        VehicleInterface v = new Vehicle();
-        v.setVIN("1HGCM82633A004352");
-        v.setMake("BMW");
-        v.setModel("528i");
-        v.setColor("Black");
-        user.addVehicle(v);
-        assertTrue(user.getVehicle("1HGCM82633A004352").equals(v));
+    public void testLicenseNo() {
+        user.setLicNo("K1234567890");
+        assertEquals("K1234567890", user.getLicNo());
+    }
+
+    @Test
+    public void testImageURL() {
+        user.setImageURL("www.google.com/images");
+        assertEquals("www.google.com/images", user.getImageURL());
+    }
+
+    @Test
+    public void testAddVehicle() {
+        newVehicle.setVIN("2HGCM82633A004352");
+        user.addVehicle(newVehicle);
+        assertEquals(newVehicle, user.getVehicles().get("2HGCM82633A004352"));
+    }
+
+    @Test
+    public void testRemoveVehicle() {
+        user.removeVehicle(usersVehicle);
+        assertEquals(0, user.getVehicles().size());
     }
 }

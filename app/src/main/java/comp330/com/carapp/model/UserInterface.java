@@ -1,5 +1,7 @@
 package comp330.com.carapp.model;
 
+import java.util.HashMap;
+
 /**
  * Created by aksharkumar on 4/10/16.
  */
@@ -16,6 +18,6 @@ public interface UserInterface {
     public void setImageURL(String imageURL);
     public String getImageURL();
     public void addVehicle(VehicleInterface v);
-    //this method could introduce potential bugs
-    public VehicleInterface getVehicle(String s);
+    public HashMap<String, VehicleInterface> getVehicles();
+    public void removeVehicle(VehicleInterface v);
 }
