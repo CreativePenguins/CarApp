@@ -5,8 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Tests for the maintenance interface in model
@@ -31,40 +29,40 @@ public class MaintenanceTest {
     @Test
     public void testMaintType() {
         maintenance.setType("Tires");
-        assertEquals(maintenance.getType(), "Tires");
+        assertEquals( "Tires", maintenance.getType());
     }
 
     @Test
     public void testMaintValue() {
         maintenance.setValue("Tires Rotated");
-        assertEquals(maintenance.getValue(), "Tires Rotated");
+        assertEquals("Tires Rotated", maintenance.getValue());
     }
 
     @Test
     public void testMaintDetail() {
         maintenance.setDetails("Tires Swapped (Front and Back)");
-        assertEquals(maintenance.getDetails(), "Tires Swapped (Front and Back)");
+        assertEquals("Tires Swapped (Front and Back)", maintenance.getDetails());
     }
 
     @Test
     public void testMaintMileage() {
         mileage.setMileage(4284);
         maintenance.setMileage(mileage);
-        assertEquals(maintenance.getMileage().getMileage(), 4284);
+        assertEquals(4284, maintenance.getMileage().getMileage());
     }
 
     @Test
     public void testMaintMileageDate() {
         mileage.setDate("02/3/2016");
         maintenance.setMileage(mileage);
-        assertEquals(maintenance.getMileage().getDate(), "02/3/2016");
+        assertEquals("02/3/2016", maintenance.getMileage().getDate());
     }
 
     @Test
     public void testMaintMileageVehicleID() {
         mileage.setVehicleID(5);
         maintenance.setMileage(mileage);
-        assertEquals(maintenance.getMileage().getVehicleID(), 5);
+        assertEquals(5, maintenance.getMileage().getVehicleID());
     }
 
 }

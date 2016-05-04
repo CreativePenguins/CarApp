@@ -5,8 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Tests for the mileage interface in model
@@ -14,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 public class MileageTest {
 
-    protected MileageInterface mileage;
+    protected MileageInterface mileage = null;
     
     @Before
     public void setUp() {
@@ -29,14 +27,18 @@ public class MileageTest {
     @Test
     public void testDate() {
         mileage.setDate("02/3/2016");
-        assertEquals(mileage.getDate(), "02/3/2016");
-        assertFalse(mileage.getDate().equals("01/01/2014"));
+        assertEquals("02/3/2016", mileage.getDate());
     }
 
     @Test
     public void testMileage() {
         mileage.setMileage(4284);
-        assertEquals(mileage.getMileage(), 4284);
-        assertFalse(mileage.getMileage() == 2019);
+        assertEquals(4284, mileage.getMileage());
+    }
+
+    @Test
+    public void testMileageVehicleID() {
+        mileage.setVehicleID(7);
+        assertEquals(7, mileage.getVehicleID());
     }
 }
