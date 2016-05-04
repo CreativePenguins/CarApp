@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
  * Tests for the vehicle interface in model
  */
 public class VehicleTest {
+
     protected VehicleInterface v;
 
     @Before

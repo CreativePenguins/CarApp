@@ -12,40 +12,41 @@ import static org.junit.Assert.assertTrue;
  * Tests for the user interface in model
  */
 public class UserTest {
-    protected UserInterface u;
+
+    protected UserInterface user;
 
     @Before
     public void setUp() {
-        u = new User();
+        user = new User();
     }
 
     @After
     public void tearDown() {
-        u = null;
+        user = null;
     }
 
     @Test
     public void testUsername() {
-        u.setUsername("akumar6");
-        assertEquals(u.getUsername(), "akumar6");
+        user.setUsername("akumar6");
+        assertEquals(user.getUsername(), "akumar6");
     }
 
     @Test
     public void testPassword() {
-        u.setPassword("password123");
-        assertEquals(u.getPassword(), "password123");
+        user.setPassword("password123");
+        assertEquals(user.getPassword(), "password123");
     }
 
     @Test
     public void testVehicle() {
-        u.setUsername("carUser");
-        u.setPassword("1234");
+        user.setUsername("carUser");
+        user.setPassword("1234");
         VehicleInterface v = new Vehicle();
         v.setVIN("1HGCM82633A004352");
         v.setMake("BMW");
         v.setModel("528i");
         v.setColor("Black");
-        u.addVehicle(v);
-        assertTrue(u.getVehicle("1HGCM82633A004352").equals(v));
+        user.addVehicle(v);
+        assertTrue(user.getVehicle("1HGCM82633A004352").equals(v));
     }
 }
