@@ -12,26 +12,37 @@ import static org.junit.Assert.assertTrue;
  * Tests for the vehicle settings interface in model
  */
 public class VehicleSettingsTest {
-    protected VehicleSettingsInterface vs;
+
+    protected VehicleSettingsInterface vehicleSettings = null;
 
     @Before
     public void setUp() {
-        vs = new VehicleSettings();
+        vehicleSettings = new VehicleSettings();
     }
+
     @After
     public void tearDown() {
-        vs = null;
+        vehicleSettings = null;
     }
 
     @Test
     public void testMileageUpdateFreq() {
-        vs.setMileageUpdateFreq(7);
-        assertTrue(vs.getMileageUpdateFreq() == 7);
+        vehicleSettings.setMileageUpdateFreq(7);
+        assertEquals(7, vehicleSettings.getMileageUpdateFreq());
     }
 
     @Test
-    public void testSetMaintenanceToTrack(){
+    public void testInitialSetMaintenanceToTrack(){
+        assertEquals(true, vehicleSettings.getMaintenanceToTrack().get("air filter"));
+        assertEquals(true, vehicleSettings.getMaintenanceToTrack().get("brakes"));
+        assertEquals(true, vehicleSettings.getMaintenanceToTrack().get("oil change"));
+        assertEquals(true, vehicleSettings.getMaintenanceToTrack().get("tires"));
+    }
 
+    @Test
+    public void testSetMaintenanceToTrack() {
+        vehicleSettings.setMaintenanceToTrack("brakes");
+        assertEquals(false, vehicleSettings.getMaintenanceToTrack().get("brakes"));
     }
 
 }

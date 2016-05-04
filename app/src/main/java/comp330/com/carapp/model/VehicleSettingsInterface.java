@@ -8,7 +8,6 @@ import java.util.HashMap;
 public interface VehicleSettingsInterface {
     public void setMileageUpdateFreq(int mileageUpdateFreq);
     public int getMileageUpdateFreq();
-    public void setMaintenanceToTrack(String s);
+    public void setMaintenanceToTrack(String maintType);
     public HashMap<String, Boolean> getMaintenanceToTrack();
 }
-

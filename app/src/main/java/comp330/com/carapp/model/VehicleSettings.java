@@ -1,5 +1,6 @@
 package comp330.com.carapp.model;
 import java.util.HashMap;
+
 /**
  * Created by aksharkumar on 4/2/16.
  */
@@ -10,6 +11,7 @@ public class VehicleSettings implements VehicleSettingsInterface {
     private HashMap<String, Boolean> maintenanceToTrack;
 
     VehicleSettings() {
+        maintenanceToTrack = new HashMap<>();
         initialSetMaintenanceToTrack();
     }
 
@@ -23,13 +25,20 @@ public class VehicleSettings implements VehicleSettingsInterface {
         return mileageUpdateFreq;
     }
 
+    /**
+     * Method is called to switch the current tracking
+     * of the input maintenance type. If the input type is set to false,
+     * the method switches it to true. If the input type is set to true,
+     * the method switches it to false.
+     * @param maintType type of maintenance to set
+     */
     @Override
-    public void setMaintenanceToTrack(String s) {
-        if(maintenanceToTrack.get(s)) {
-            maintenanceToTrack.put(s, false);
+    public void setMaintenanceToTrack(String maintType) {
+        if(maintenanceToTrack.get(maintType)) {
+            maintenanceToTrack.put(maintType, false);
         }
         else {
-            maintenanceToTrack.put(s, true);
+            maintenanceToTrack.put(maintType, true);
         }
     }
 
@@ -39,9 +48,9 @@ public class VehicleSettings implements VehicleSettingsInterface {
     }
 
     private void initialSetMaintenanceToTrack() {
-        setMaintenanceToTrack("brakes");
-        setMaintenanceToTrack("oil change");
-        setMaintenanceToTrack("air filter");
-        setMaintenanceToTrack("tires");
+        maintenanceToTrack.put("air filter", true);
+        maintenanceToTrack.put("brakes", true);
+        maintenanceToTrack.put("oil change", true);
+        maintenanceToTrack.put("tires", true);
     }
 }
