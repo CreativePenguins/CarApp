@@ -12,47 +12,57 @@ import static org.junit.Assert.assertTrue;
  */
 public class VehicleTest {
 
-    protected VehicleInterface v;
+    protected VehicleInterface vehicle = null;
 
     @Before
     public void setUp() {
-        v = new Vehicle();
+        vehicle = new Vehicle();
     }
 
     @After
     public void tearDown() {
-        v = null;
+        vehicle = null;
+    }
+
+    @Test
+    public void testName() {
+        vehicle.setName("MyNissan");
+        assertEquals("MyNissan", vehicle.getName());
     }
 
     @Test
     public void testMake() {
-        v.setMake("Nissan");
-        assertEquals(v.getMake(), "Nissan");
-        assertFalse(v.getMake().equals("Honda"));
+        vehicle.setMake("Nissan");
+        assertEquals(vehicle.getMake(), "Nissan");
     }
 
     @Test
     public void testModel() {
-        v.setModel("Altima");
-        assertEquals(v.getModel(), "Altima");
-        assertFalse(v.getModel().equals("Accord"));
+        vehicle.setModel("Altima");
+        assertEquals(vehicle.getModel(), "Altima");
     }
 
     @Test
     public void testYear() {
-        v.setYear(1994);
-        assertTrue(v.getYear() == 1994);
+        vehicle.setYear(1994);
+        assertTrue(vehicle.getYear() == 1994);
     }
 
     @Test
     public void testVIN() {
-        v.setVIN("1HGCM82633A004352");
-        assertTrue(v.getVIN().equals("1HGCM82633A004352"));
+        vehicle.setVIN("1HGCM82633A004352");
+        assertTrue(vehicle.getVIN().equals("1HGCM82633A004352"));
     }
 
     @Test
     public void testColor(){
-        v.setColor("Red");
-        assertTrue(v.getColor().equals("Red"));
+        vehicle.setColor("Red");
+        assertTrue(vehicle.getColor().equals("Red"));
+    }
+
+    @Test
+    public void testLicensePlate() {
+        vehicle.setLicensePlate("0000000");
+        assertEquals("0000000", vehicle.getLicensePlate());
     }
 }

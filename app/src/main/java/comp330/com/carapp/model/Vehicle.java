@@ -12,7 +12,6 @@ public class Vehicle implements VehicleInterface{
     private String color;
     private String licensePlate;
     private String VIN;
-    private MileageInterface mileage;
 
     @Override
     public String getName() {
@@ -82,13 +81,4 @@ public class Vehicle implements VehicleInterface{
         return VIN;
     }
 
-    @Override
-    public void setMileage(MileageInterface mileage) {
-        this.mileage = mileage;
-    }
-
-    @Override
-    public MileageInterface getMileage() {
-        return mileage;
-    }
 }
