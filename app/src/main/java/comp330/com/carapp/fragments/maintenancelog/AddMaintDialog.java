@@ -153,13 +153,13 @@ public class AddMaintDialog extends DialogFragment {
             month += 1;
             String date = String.valueOf(year);
             if (month < 10) {
-                date += "0" + String.valueOf(month);
+                date += '0' + String.valueOf(month);
             } else {
                 date += month;
             }
 
             if (day < 10) {
-                date += "0" + String.valueOf(day);
+                date += '0' + String.valueOf(day);
             } else {
                 date += day;
             }

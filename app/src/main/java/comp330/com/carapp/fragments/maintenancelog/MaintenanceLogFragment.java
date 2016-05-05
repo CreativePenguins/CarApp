@@ -70,16 +70,18 @@ public class MaintenanceLogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         maintService = new MaintService(getActivity());
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_maintenance_log, container, false);
-        RecyclerView rview = (RecyclerView) view.findViewById(R.id.maintList);
+
+        RecyclerView rView = (RecyclerView) view.findViewById(R.id.maintList);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        rview.setLayoutManager(llm);
+        rView.setLayoutManager(llm);
         generateMaintList();
         //populateSampleList();
         MaintViewAdapter adapter = new MaintViewAdapter(list);
-        rview.setAdapter(adapter);
+        rView.setAdapter(adapter);
         return view;
     }
 
@@ -143,7 +145,9 @@ public class MaintenanceLogFragment extends Fragment {
         list.add(temp3);
     }*/
 
-
+    /**
+     * Generate the ArrayList<MaintenanceInterface> list
+     */
     private void generateMaintList() {
         ArrayList<MaintenanceInterface> dbList = maintService.getMaintList(vehicleID);
         HashMap<String, ArrayList<MaintenanceInterface>> recMap = new HashMap<String, ArrayList<MaintenanceInterface>>();
@@ -161,7 +165,5 @@ public class MaintenanceLogFragment extends Fragment {
                 list.add(recMap.get(st).get(recMap.get(st).size() - 1));
             }
         }
-
     }
-
 }

@@ -56,6 +56,5 @@ public class MaintViewAdapter extends RecyclerView.Adapter<MaintViewAdapter.Main
             maintDate = (TextView) v.findViewById(R.id.txtDate);
             maintMileage = (TextView) v.findViewById(R.id.txtMileage);
         }
-
     }
 }
