@@ -132,6 +132,7 @@ public class AddMaintDialog extends DialogFragment {
             return builder.create();
         }
     }
+
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
@@ -147,7 +148,9 @@ public class AddMaintDialog extends DialogFragment {
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
+        @Override
         public void onDateSet(DatePicker view, int year, int month, int day) {
+            month += 1;
             String date = String.valueOf(year);
             if (month < 10) {
                 date += "0" + String.valueOf(month);
