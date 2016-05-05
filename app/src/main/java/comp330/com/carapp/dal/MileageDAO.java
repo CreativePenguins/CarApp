@@ -125,5 +125,4 @@ public class MileageDAO {
 
         return currentMileage;
     }
-
 }

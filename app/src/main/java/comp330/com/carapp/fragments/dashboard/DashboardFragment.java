@@ -139,5 +139,4 @@ public class DashboardFragment extends Fragment {
         int progress = (int) Math.floor((currentMileage - lastOCMileage) / 30);
         arcProgress.setProgress(progress);
     }
-
 }

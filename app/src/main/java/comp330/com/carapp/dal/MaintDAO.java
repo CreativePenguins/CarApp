@@ -106,11 +106,17 @@ public class MaintDAO {
                 }
 
             } finally {
-                try { cursor.close(); } catch (Exception ignore) {}
+                try { cursor.close(); } catch (Exception e) {
+                    System.err.println("MaintDAO: Threw an exception retrieving maint list by type.");
+                    System.err.println(e.getMessage());
+                }
             }
 
         } finally {
-            try { database.close(); } catch (Exception ignore) {}
+            try { database.close(); } catch (Exception e) {
+                System.err.println("MaintDAO: Threw an exception retrieving maint list by type.");
+                System.err.println(e.getMessage());
+            }
         }
 
         return list;

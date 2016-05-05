@@ -133,5 +133,3 @@ public class AddMileageDialog extends DialogFragment {
         }
     }
 }
-
-

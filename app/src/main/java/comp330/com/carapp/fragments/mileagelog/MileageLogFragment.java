@@ -161,5 +161,4 @@ public class MileageLogFragment extends Fragment {
             }
         }
     }
-
 }

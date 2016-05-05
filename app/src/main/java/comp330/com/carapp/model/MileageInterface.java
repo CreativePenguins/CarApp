@@ -5,14 +5,9 @@ package comp330.com.carapp.model;
  */
 public interface MileageInterface {
     public void setDate(String date);
-
     public String getDate();
-
     public void setMileage(int mileage);
-
     public int getMileage();
-
     public int getVehicleID();
-
     public void setVehicleID(int vehicleID);
 }
