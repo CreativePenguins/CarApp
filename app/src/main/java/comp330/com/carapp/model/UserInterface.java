@@ -6,17 +6,17 @@ import java.util.HashMap;
  * Created by aksharkumar on 4/10/16.
  */
 public interface UserInterface {
-    public void setName(String name);
-    public String getName();
-    public void setLicNo(String LicNo);
-    public String getLicNo();
-    public void setUsername (String username);
-    public String getUsername();
-    public void setPassword(String password);
-    public String getPassword();
-    public void setImageURL(String imageURL);
-    public String getImageURL();
-    public void addVehicle(VehicleInterface v);
-    public HashMap<String, VehicleInterface> getVehicles();
-    public void removeVehicle(VehicleInterface v);
+    void setName(String name);
+    String getName();
+    void setLicNo(String LicNo);
+    String getLicNo();
+    void setUsername (String username);
+    String getUsername();
+    void setPassword(String password);
+    String getPassword();
+    void setImageURL(String imageURL);
+    String getImageURL();
+    void addVehicle(VehicleInterface v);
+    HashMap<String, VehicleInterface> getVehicles();
+    void removeVehicle(VehicleInterface v);
 }
